@@ -61,10 +61,10 @@ const Contact = () => {
         <div className="min-h-screen bg-gray-50">
             <Navbar />
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20">
+            <section className="bg-gradient-to-br from-[#4D14C7] via-violet-700 to-[#4D14C7] text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-                    <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                    <p className="text-xl text-violet-100 mb-8 max-w-3xl mx-auto">
                         Have questions? Reach out to our team for assistance with admissions, courses, or anything else.
                     </p>
                 </div>
@@ -79,19 +79,19 @@ const Contact = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
-                            <Phone className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Phone className="w-12 h-12 text-[#4D14C7] mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
                             <p className="text-gray-600">+91 999 332 999</p>
                             <p className="text-gray-600">Mon-Sat: 9 AM - 6 PM</p>
                         </div>
                         <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
-                            <Mail className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Mail className="w-12 h-12 text-[#4D14C7] mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
                             <p className="text-gray-600">admissions@jajuacademy.com</p>
                             <p className="text-gray-600">We'll respond within 24 hours</p>
                         </div>
                         <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
-                            <MapPin className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <MapPin className="w-12 h-12 text-[#4D14C7] mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
                             <p className="text-gray-600">Jaju's Professional Academy</p>
                             <p className="text-gray-600">Schedule a campus visit</p>
@@ -125,7 +125,7 @@ const Contact = () => {
                                     value={formData.name}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
                                     placeholder="Enter your full name"
                                 />
                             </div>
@@ -141,7 +141,7 @@ const Contact = () => {
                                     value={formData.email}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
                                     placeholder="Enter your email"
                                 />
                             </div>
@@ -157,7 +157,7 @@ const Contact = () => {
                                     value={formData.phone}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
                                     placeholder="Enter your phone number"
                                 />
                             </div>
@@ -173,7 +173,7 @@ const Contact = () => {
                                     onChange={handleInputChange}
                                     required
                                     rows={5}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent resize-none"
                                     placeholder="Your message or query"
                                 ></textarea>
                             </div>
@@ -181,7 +181,7 @@ const Contact = () => {
                             {/* Submit */}
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors flex items-center justify-center"
+                                className="w-full bg-[#5917E8] hover:bg-[#4D14C7] text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors flex items-center justify-center"
                             >
                                 Send Message
                                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -193,18 +193,18 @@ const Contact = () => {
 
 
             {/* Footer */}
-            <footer className="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-16">
+            <footer className="bg-gradient-to-r from-[#5917E8] to-[#4D14C7] text-white py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Jaju Professional Academy</h3>
-                            <p className="text-blue-200 leading-relaxed">
+                            <p className="text-violet-200 leading-relaxed">
                                 Your trusted partner in CA education and professional development.
                             </p>
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                            <ul className="text-blue-200 space-y-2">
+                            <ul className="text-violet-200 space-y-2">
                                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
                                 <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
                                 <li><Link to="/programs" className="hover:text-white transition-colors">Programs</Link></li>
@@ -213,7 +213,7 @@ const Contact = () => {
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Programs</h4>
-                            <ul className="text-blue-200 space-y-2">
+                            <ul className="text-violet-200 space-y-2">
                                 <li>CA Foundation</li>
                                 <li>CA Intermediate</li>
                                 <li>XI & XII Commerce</li>
@@ -221,14 +221,14 @@ const Contact = () => {
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                            <div className="text-blue-200 space-y-2">
+                            <div className="text-violet-200 space-y-2">
                                 <p>+91 999 332 999</p>
                                 <p>admissions@jajuacademy.com</p>
                             </div>
                         </div>
                     </div>
-                    <div className="border-t border-blue-700 mt-12 pt-8 text-center">
-                        <p className="text-blue-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
+                    <div className="border-t border-violet-700 mt-12 pt-8 text-center">
+                        <p className="text-violet-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

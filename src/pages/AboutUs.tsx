@@ -7,10 +7,10 @@ const AboutUs = () => {
         <div className="min-h-screen bg-gray-50">
             <Navbar />
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20">
+            <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-5xl font-bold mb-6">About Jaju's Professional Academy</h1>
-                    <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                    <p className="text-xl text-violet-100 mb-8 max-w-3xl mx-auto">
                         Your trusted partner in shaping successful careers in Chartered Accountancy and commerce education.
                     </p>
                     <div className="flex justify-center">
@@ -48,17 +48,17 @@ const AboutUs = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-                            <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Users className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">CA Professionals</h3>
                             <p className="text-gray-600">Our faculty includes practicing CAs with years of industry experience.</p>
                         </div>
                         <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-                            <BookOpen className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <BookOpen className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Academic Experts</h3>
                             <p className="text-gray-600">Educators with deep knowledge in accounting, taxation, and commerce.</p>
                         </div>
                         <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-                            <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Award className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Mentors & Guides</h3>
                             <p className="text-gray-600">Personalized mentoring to guide students through their CA journey.</p>
                         </div>
@@ -75,17 +75,17 @@ const AboutUs = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="bg-gray-50 rounded-2xl p-8 shadow-lg text-center">
-                            <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Award className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">10,000+ Students</h3>
                             <p className="text-gray-600">Trained over 10,000 students in CA and commerce programs.</p>
                         </div>
                         <div className="bg-gray-50 rounded-2xl p-8 shadow-lg text-center">
-                            <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Award className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">High Success Rate</h3>
                             <p className="text-gray-600">Consistently high pass rates in CA Foundation and Intermediate exams.</p>
                         </div>
                         <div className="bg-gray-50 rounded-2xl p-8 shadow-lg text-center">
-                            <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Award className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted Since 2000</h3>
                             <p className="text-gray-600">Over two decades of excellence in CA education.</p>
                         </div>
@@ -94,18 +94,18 @@ const AboutUs = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-16">
+            <footer className="bg-gradient-to-r from-[#5917E8] to-[#4D14C7] text-white py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Jaju Professional Academy</h3>
-                            <p className="text-blue-200 leading-relaxed">
+                            <p className="text-violet-200 leading-relaxed">
                                 Your trusted partner in CA education and professional development.
                             </p>
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                            <ul className="text-blue-200 space-y-2">
+                            <ul className="text-violet-200 space-y-2">
                                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
                                 <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
                                 <li><Link to="/programs" className="hover:text-white transition-colors">Programs</Link></li>
@@ -114,7 +114,7 @@ const AboutUs = () => {
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Programs</h4>
-                            <ul className="text-blue-200 space-y-2">
+                            <ul className="text-violet-200 space-y-2">
                                 <li>CA Foundation</li>
                                 <li>CA Intermediate</li>
                                 <li>XI & XII Commerce</li>
@@ -122,14 +122,14 @@ const AboutUs = () => {
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                            <div className="text-blue-200 space-y-2">
+                            <div className="text-violet-200 space-y-2">
                                 <p>+91 999 332 999</p>
                                 <p>admissions@jajuacademy.com</p>
                             </div>
                         </div>
                     </div>
-                    <div className="border-t border-blue-700 mt-12 pt-8 text-center">
-                        <p className="text-blue-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
+                    <div className="border-t border-violet-700 mt-12 pt-8 text-center">
+                        <p className="text-violet-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

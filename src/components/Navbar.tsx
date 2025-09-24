@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Logo from '../assets/nav_logo.png';
 
 function Navbar() {
     const { pathname } = useLocation();
@@ -8,17 +9,21 @@ function Navbar() {
 
     const getLinkClass = (path: string) => {
         return pathname === path
-            ? 'text-blue-600 px-3 py-2 text-sm font-medium border-b-2 border-blue-600'
-            : 'text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors';
+            ? 'text-violet-600 px-3 py-2 text-sm font-medium border-b-2 border-violet-600'
+            : 'text-gray-900 hover:text-violet-600 px-3 py-2 text-sm font-medium transition-colors';
     };
 
     return (
         <nav className="bg-white shadow-lg sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    <div className="flex-shrink-0">
-                        <Link to="/">
-                            <h1 className="text-2xl font-bold text-gray-900">Jaju's Professional Academy</h1>
+                    <div className="flex items-center justify-between h-16 px-6">
+                        {/* Logo + Title */}
+                        <Link to="/" className="flex items-center space-x-3">
+                            <img src={Logo} alt="Logo" className="h-12 w-auto" />
+                            <h1 className="text-2xl font-bold text-gray-800 tracking-tight">
+                                Jaju's <span className="text-violet-700">Professional Academy</span>
+                            </h1>
                         </Link>
                     </div>
                     <div className="md:hidden">

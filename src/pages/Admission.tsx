@@ -159,10 +159,10 @@ const AdmissionPage = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20">
+            <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-5xl font-bold mb-6">Admission Open</h1>
-                    <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                    <p className="text-xl text-violet-100 mb-8 max-w-3xl mx-auto">
                         Join thousands of successful CA professionals. Start your journey with India's most trusted CA coaching institute.
                     </p>
                     <div className="flex justify-center space-x-8 text-sm">
@@ -188,10 +188,10 @@ const AdmissionPage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {courses.map((course, index) => (
-                            <div key={index} className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
+                            <div key={index} className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-violet-500 hover:shadow-xl transition-all duration-300">
                                 <div className="text-center mb-6">
                                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{course.name}</h3>
-                                    <div className="text-3xl font-bold text-blue-600 mb-4">{course.fee}</div>
+                                    <div className="text-3xl font-bold text-violet-600 mb-4">{course.fee}</div>
                                     <div className="text-sm text-gray-600 mb-2">
                                         <Clock className="w-4 h-4 inline mr-1" />
                                         Duration: {course.duration}
@@ -220,7 +220,7 @@ const AdmissionPage = () => {
 
                                 <Link
                                     to={`/admission?course=${encodeURIComponent(course.name)}#application-form`}
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                                    className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
                                 >
                                     Apply Now
                                 </Link>
@@ -242,18 +242,18 @@ const AdmissionPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {admissionProcess.map((process, index) => (
                             <div key={index} className="text-center">
-                                <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                                <div className="bg-violet-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                                     {process.step}
                                 </div>
                                 <div className="bg-white rounded-2xl p-6 shadow-lg h-full">
-                                    <div className="flex justify-center mb-4 text-blue-600">
+                                    <div className="flex justify-center mb-4 text-violet-600">
                                         {process.icon}
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
                                     <p className="text-gray-600 text-sm">{process.description}</p>
                                 </div>
                                 {index < admissionProcess.length - 1 && (
-                                    <div className="hidden md:block absolute top-8 left-full w-8 h-0.5 bg-blue-300 transform translate-x-4"></div>
+                                    <div className="hidden md:block absolute top-8 left-full w-8 h-0.5 bg-violet-300 transform translate-x-4"></div>
                                 )}
                             </div>
                         ))}
@@ -276,7 +276,7 @@ const AdmissionPage = () => {
                                     key={index}
                                     className="flex items-start p-4 bg-white rounded-lg shadow-sm"
                                 >
-                                    <FileText className="w-5 h-5 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                                    <FileText className="w-5 h-5 text-violet-600 mr-3 mt-1 flex-shrink-0" />
                                     <p className="text-gray-700 break-words flex-1">{doc}</p>
                                 </div>
                             ))}
@@ -312,7 +312,7 @@ const AdmissionPage = () => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                         placeholder="Enter your full name"
                                     />
                                 </div>
@@ -327,7 +327,7 @@ const AdmissionPage = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                         placeholder="Enter your email"
                                     />
                                 </div>
@@ -342,7 +342,7 @@ const AdmissionPage = () => {
                                         value={formData.phone}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                         placeholder="Enter your phone number"
                                     />
                                 </div>
@@ -356,7 +356,7 @@ const AdmissionPage = () => {
                                         value={formData.course}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                     >
                                         <option value="">Select a course</option>
                                         <option value="CA Foundation">CA Foundation</option>
@@ -374,7 +374,7 @@ const AdmissionPage = () => {
                                     name="experience"
                                     value={formData.experience}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                 >
                                     <option value="">Select your level</option>
                                     <option value="10th Pass">10th Pass</option>
@@ -393,14 +393,14 @@ const AdmissionPage = () => {
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     rows={4}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                     placeholder="Any specific questions or requirements?"
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors mt-8 flex items-center justify-center"
+                                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors mt-8 flex items-center justify-center"
                             >
                                 Submit Application
                                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -420,21 +420,21 @@ const AdmissionPage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center p-8 bg-gray-50 rounded-2xl">
-                            <Phone className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Phone className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
                             <p className="text-gray-600">+91 999 332 999</p>
                             <p className="text-gray-600">Mon-Sat: 9 AM - 6 PM</p>
                         </div>
 
                         <div className="text-center p-8 bg-gray-50 rounded-2xl">
-                            <Mail className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <Mail className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
                             <p className="text-gray-600">admissions@jajuacademy.com</p>
                             <p className="text-gray-600">We'll respond within 24 hours</p>
                         </div>
 
                         <div className="text-center p-8 bg-gray-50 rounded-2xl">
-                            <MapPin className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                            <MapPin className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
                             <p className="text-gray-600">Jaju's Professional Academy</p>
                             <p className="text-gray-600">Schedule a campus visit</p>
@@ -444,19 +444,19 @@ const AdmissionPage = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-16">
+            <footer className="bg-gradient-to-r from-[#5917E8] to-[#4D14C7] text-white py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Jaju Professional Academy</h3>
-                            <p className="text-blue-200 leading-relaxed">
+                            <p className="text-violet-200 leading-relaxed">
                                 Your trusted partner in CA education and professional development.
                             </p>
                         </div>
 
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                            <ul className="text-blue-200 space-y-2">
+                            <ul className="text-violet-200 space-y-2">
                                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
                                 <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
                                 <li><Link to="/programs" className="hover:text-white transition-colors">Programs</Link></li>
@@ -466,7 +466,7 @@ const AdmissionPage = () => {
 
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Programs</h4>
-                            <ul className="text-blue-200 space-y-2">
+                            <ul className="text-violet-200 space-y-2">
                                 <li>CA Foundation</li>
                                 <li>CA Intermediate</li>
                                 <li>XI & XII Commerce</li>
@@ -475,15 +475,15 @@ const AdmissionPage = () => {
 
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                            <div className="text-blue-200 space-y-2">
+                            <div className="text-violet-200 space-y-2">
                                 <p>+91 999 332 999</p>
                                 <p>admissions@jajuacademy.com</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="border-t border-blue-700 mt-12 pt-8 text-center">
-                        <p className="text-blue-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
+                    <div className="border-t border-violet-700 mt-12 pt-8 text-center">
+                        <p className="text-violet-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Calendar, Clock, Users, CheckCircle, FileText, CreditCard, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const AdmissionPage = () => {
     const location = useLocation();
@@ -220,10 +221,20 @@ const AdmissionPage = () => {
 
                                 <Link
                                     to={`/admission?course=${encodeURIComponent(course.name)}#application-form`}
+                                    onClick={() => {
+                                        // delay so navigation updates formData first
+                                        setTimeout(() => {
+                                            const el = document.getElementById("application-form");
+                                            if (el) {
+                                                el.scrollIntoView({ behavior: "smooth" });
+                                            }
+                                        }, 100);
+                                    }}
                                     className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
                                 >
                                     Apply Now
                                 </Link>
+
 
                             </div>
                         ))}
@@ -444,49 +455,7 @@ const AdmissionPage = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gradient-to-r from-[#5917E8] to-[#4D14C7] text-white py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        <div>
-                            <h3 className="text-2xl font-bold mb-4">Jaju Professional Academy</h3>
-                            <p className="text-violet-200 leading-relaxed">
-                                Your trusted partner in CA education and professional development.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                            <ul className="text-violet-200 space-y-2">
-                                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-                                <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                                <li><Link to="/programs" className="hover:text-white transition-colors">Programs</Link></li>
-                                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 className="text-lg font-semibold mb-4">Programs</h4>
-                            <ul className="text-violet-200 space-y-2">
-                                <li>CA Foundation</li>
-                                <li>CA Intermediate</li>
-                                <li>XI & XII Commerce</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                            <div className="text-violet-200 space-y-2">
-                                <p>+91 999 332 999</p>
-                                <p>admissions@jajuacademy.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="border-t border-violet-700 mt-12 pt-8 text-center">
-                        <p className="text-violet-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 };

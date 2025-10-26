@@ -1,37 +1,38 @@
 import { useState, useEffect, useRef } from 'react';
 import { useCallback } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, BookOpen, Users, Award, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, BookOpen, Users, Award, Star, Trophy, Target, Sparkles } from 'lucide-react';
 import Navbar from '../components/Navbar';
-import HomeSec1 from '../assets/hero_Sec_1.png';
-import HomeSec2 from '../assets/hero_Sec_2.png';
-import HomeSec3 from '../assets/hero_Sec_3.png';
-import Testimony1 from '../assets/testimony_1.png';
-import Testimony2 from '../assets/testimony_2.png';
-import Testimony3 from '../assets/testimony_3.png';
+import { photoMap } from "../data/photoMap";
 
-import Logo from '../assets/nav_logo.png';
-import Footer from '../components/Footer';
+// Import your actual components and images
+// import Navbar from '../components/Navbar';
+// import Footer from '../components/Footer';
+// import Logo from '../assets/nav_logo.png';
+
+interface Student {
+  name: string;
+  photo: string;
+}
 
 const Home = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [, setCurrentTestimonial] = useState(0);
+  const [hoveredProgramIndex, setHoveredProgramIndex] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const testimonialRef = useRef<HTMLDivElement>(null);
+
+  const [currentCategory, setCurrentCategory] = useState(0);
 
   // Check if device is mobile
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     checkIsMobile();
     window.addEventListener('resize', checkIsMobile);
-
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
@@ -39,25 +40,119 @@ const Home = () => {
     setIsVisible(true);
   }, []);
 
-  const testimonials = [
+  // Programs data for hero section
+  const programs = [
     {
-      text: "Jaju's Academy helped me crack my exams with confidence!",
-      author: "Rohit Sharma",
-      image: Testimony1,
+      title: "CA Foundation",
+      description: "Build a strong foundation for your CA journey with comprehensive courses",
+      icon: <BookOpen className="w-12 h-12" />,
+      features: ["Expert Faculty", "Study Materials", "Mock Tests", "Doubt Sessions"],
+      color: "from-purple-600 to-blue-600",
+      stats: { students: "500+", success: "85%" }
     },
     {
-      text: "The teachers here are amazing and the support is unmatched.",
-      author: "Priya Verma",
-      image: Testimony2,
+      title: "CA Intermediate",
+      description: "Advanced preparation with industry experts and practical approach",
+      icon: <Users className="w-12 h-12" />,
+      features: ["Live Classes", "Case Studies", "Revision Classes", "Personal Mentoring"],
+      color: "from-blue-600 to-cyan-600",
+      stats: { students: "300+", success: "78%" }
     },
     {
-      text: "Joining here was the best decision for my career growth.",
-      author: "Arjun Mehta",
-      image: Testimony3,
+      title: "CA Final",
+      description: "Master the final stage with strategic guidance and exam techniques",
+      icon: <Award className="w-12 h-12" />,
+      features: ["Strategic Planning", "Advanced Topics", "Interview Prep", "Career Guidance"],
+      color: "from-cyan-600 to-teal-600",
+      stats: { students: "200+", success: "72%" }
     },
+    {
+      title: "XI & XII Commerce",
+      description: "Strong commerce foundation for school students aspiring for CA",
+      icon: <Target className="w-12 h-12" />,
+      features: ["School Curriculum", "CA Foundation Prep", "Regular Assessments", "Career Counseling"],
+      color: "from-teal-600 to-green-600",
+      stats: { students: "400+", success: "90%" }
+    }
   ];
 
-  // Touch handlers for testimonials
+  // Results data for testimonial section
+  const results = [
+    {
+      category: "AIR Ranks",
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
+      achievements: [
+        { rank: "AIR 15", name: "Rajesh Kumar", exam: "CA Final" },
+        { rank: "AIR 23", name: "Priya Sharma", exam: "CA Inter" },
+        { rank: "AIR 47", name: "Amit Patel", exam: "CA Foundation" }
+      ]
+    },
+    {
+      category: "CA Foundation",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop",
+      achievements: [
+        { text: "95% Pass Rate", subtext: "May 2024" },
+        { text: "450+ Students", subtext: "Qualified" },
+        { text: "85+ Distinctions", subtext: "This Year" }
+      ]
+    },
+    {
+      category: "CA Intermediate",
+      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop",
+      achievements: [
+        { text: "78% Pass Rate", subtext: "Nov 2024" },
+        { text: "280+ Students", subtext: "Qualified" },
+        { text: "45+ Distinctions", subtext: "Both Groups" }
+      ]
+    },
+    {
+      category: "CA Final",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop",
+      achievements: [
+        { text: "72% Pass Rate", subtext: "May 2024" },
+        { text: "150+ Students", subtext: "Qualified" },
+        { text: "25+ Distinctions", subtext: "Both Groups" }
+      ]
+    },
+    {
+      category: "Maharashtra Toppers",
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop",
+      achievements: [
+        { rank: "State Rank 3", name: "Sneha Deshmukh", exam: "CA Foundation" },
+        { rank: "State Rank 7", name: "Aditya Joshi", exam: "CA Inter" },
+        { rank: "State Rank 12", name: "Kavita Rane", exam: "CA Final" }
+      ]
+    },
+    {
+      category: "Marathwada Toppers",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop",
+      achievements: [
+        { rank: "Region Rank 1", name: "Rohit Pawar", exam: "CA Foundation" },
+        { rank: "Region Rank 2", name: "Pooja Bhosale", exam: "CA Inter" },
+        { rank: "Region Rank 4", name: "Vikas Shinde", exam: "CA Final" }
+      ]
+    },
+    {
+      category: "CS EET Results",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
+      achievements: [
+        { text: "88% Pass Rate", subtext: "June 2024" },
+        { text: "120+ Students", subtext: "Qualified" },
+        { text: "Top 10 Ranks", subtext: "Regional Level" }
+      ]
+    },
+    {
+      category: "Overall Excellence",
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
+      achievements: [
+        { text: "1500+ Students", subtext: "Enrolled" },
+        { text: "15+ Years", subtext: "Experience" },
+        { text: "95% Satisfaction", subtext: "Rate" }
+      ]
+    }
+  ];
+
+  // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -69,114 +164,38 @@ const Home = () => {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe) {
-      nextTestimonial();
-    }
-    if (isRightSwipe) {
-      prevTestimonial();
-    }
+    if (isLeftSwipe) nextTestimonial();
+    if (isRightSwipe) prevTestimonial();
   };
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setCurrentTestimonial((prev) => (prev + 1) % results.length);
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentTestimonial((prev) => (prev - 1 + results.length) % results.length);
   };
-
-  const programs = [
-    {
-      title: "CA Foundation",
-      description: "Comprehensive foundation courses for aspiring CAs",
-      icon: <BookOpen className="w-8 h-8" />,
-      featured: true,
-    },
-    {
-      title: "CA Intermediate",
-      description: "Advanced intermediate level preparation",
-      icon: <Users className="w-8 h-8" />,
-      featured: false,
-    },
-    {
-      title: "XI & XII COMMERCE",
-      description: "Commerce foundation for school students",
-      icon: <Award className="w-8 h-8" />,
-      featured: false,
-    },
-  ];
-
-  // const features = [
-  //   {
-  //     title: "Test Series",
-  //     description: "Join Jaju's Professional Academy and start preparing for your CA Foundation and CA Intermediate exams. Enroll for the latest batches and get quality classes from the top CA Educators.",
-  //     icon: <BookOpen className="w-12 h-12 text-[#4D14C7]" />
-  //   },
-  //   {
-  //     title: "Online Classes",
-  //     description: "Join Jaju's Professional Academy and start preparing for your CA Foundation and CA Intermediate exams. Enroll for the latest batches and get quality classes from the top CA Educators.",
-  //     icon: <Users className="w-12 h-12 text-[#4D14C7]" />
-  //   },
-  //   {
-  //     title: "Mentorship Program",
-  //     description: "Join Jaju's Professional Academy and start preparing for your CA Foundation and CA Intermediate exams. Enroll for the latest batches and get quality classes from the top CA Educators.",
-  //     icon: <Award className="w-12 h-12 text-[#4D14C7]" />
-  //   }
-  // ];
-
-  const slides = [
-    {
-      id: 1,
-      title: "Our CA Foundation Toppers",
-      subtitle: "JPA has toppers in 9 out of last 13 CA Foundation Exams",
-      image: HomeSec1,
-      bgGradient: "from-white-600 via-white-700 to-white-800",
-      buttonText: "Get Started Today",
-      buttonLink: `${import.meta.env.BASE_URL}admission?#application-form`
-    },
-    {
-      id: 2,
-      title: "Our CA Intermediate Toppers",
-      subtitle: "Join thousands of successful students who have achieved their dreams with JPA",
-      image: HomeSec2,
-      bgGradient: "",
-      buttonText: "Get Started Today",
-      buttonLink: `${import.meta.env.BASE_URL}admission?#application-form`
-
-    },
-    {
-      id: 3,
-      title: "Our CA Foundation Student Passed with Distinction",
-      subtitle: "Join thousands of successful students who have achieved their dreams with JPA",
-      image: HomeSec3,
-      bgGradient: "from-white-600 via-white-700 to-white-800",
-      buttonText: "Get Started Today",
-      buttonLink: `${import.meta.env.BASE_URL}admission?#application-form`
-    }
-  ];
 
   const resetAutoPlay = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-
     timerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % programs.length);
     }, 5000);
-  }, [slides.length]);
+  }, [programs.length]);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % programs.length);
     resetAutoPlay();
-  }, [resetAutoPlay, slides.length]);
+  }, [resetAutoPlay, programs.length]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentSlide((prev) => (prev - 1 + programs.length) % programs.length);
     resetAutoPlay();
-  }, [resetAutoPlay, slides.length]);
+  }, [resetAutoPlay, programs.length]);
 
   const goToSlide = useCallback((index: number) => {
     setCurrentSlide(index);
@@ -190,293 +209,404 @@ const Home = () => {
     };
   }, [resetAutoPlay]);
 
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  const photoFiles = import.meta.glob('../assets/photos/*.{jpg,jpeg,png}', { eager: true, import: 'default' });
+
+
+  // Match student names to filenames
+  Object.entries(photoFiles).forEach(([path, module]) => {
+    const fileName = path.split('/').pop() as string; // get 'Bhakti Mundada.jpg'
+    photoMap[fileName] = module as string;
+  });
+
+  // CA Foundation Toppers
+  const caFoundationToppers = [
+    "Bhakti Mundada", "Rishee Sethi", "Anushka Bora", "Bhoomi Malani", "Sarvesh Kabra",
+    "Yash Agrawal", "Naman Agrawal", "Rajan Kabra", "Ritika Chandak", "Rudransh Sharma",
+    "Aakansha Harne", "Pranav Ladda", "Aditi Ashar", "Asawari Rajvaidya", "Rohit Kulkarni",
+    "Vaishnavi Soni", "Varad Dagdiya", "Ashiwani Deshmukh", "Yash Devidan", "Madhura Navandar",
+    "Devika Chuttat", "Harsh Shahuji", "Gayati Katkar", "Sartak Kolpe", "Gauri Jaikte",
+    "Succhit Jajoo", "Yash Kasliwal", "Krishna Nimodiya", "Rehan Khan", "Anagha Joshi",
+    "Gaurav Malpani", "Kirti Chordiya", "Pawan Girhe", "Sanskar Shauji", "Aditi Dhoot",
+    "Krish Jaju", "Aryan Rajput", "Mayur Malu", "Shreya Pahade", "Ishwari Darak",
+    "Poorva Patil", "Tanisha Boramanikar", "Nikita Bhutada", "Aditya Loha", "Sakshi Pati",
+    "Atharva Kulkarni", "Manav Accha", "Anjali Dahiyda", "Ritika Mandhani", "Khushi Bhutada",
+    "Pradhymanu Bampalwkar", "Krushna Barjage", "Nirmit Malu", "Shreya Ghatge", "Yogesh Dhangre",
+    "Rushikesh Jaju", "Amit Pawar", "Siddhi Runwal", "Tejas Sawi", "Sakshii Morwankar",
+    "Om Ajmera", "Tanmayee Bhosale", "Shailesh Jagirdhar", "Devshish Deshpande"
+  ];
+
+  // CA Intermediate Toppers
+  const caInterToppers = [
+    "Karan Choudhari", "Aditya Mundada", "Akshay Rathod", "Aditya Ghuge", "Bhoomi Malani",
+    "Pawan Narale", "Payal Ashitikar", "Ritika Sonwane", "Riya Chandak", "Sanjot Thete",
+    "Tejaswani Pawar", "Kalyani Sethi", "Pritham Sharma", "Lalit Lahoti", "Namrata Thorle",
+    "Krish Nathani", "Monika Nirsahe", "Piyush Borale", "Udyanraje Pawar", "Sanker Barwal",
+    "Suraj Gawai", "Aarya Patil", "Omkar Dhotre", "Atharva Salunke", "Kanak Makhaji"
+  ];
+
+  // CA Final Toppers
+  const caFinalToppers = [
+    "Pranav Ladda", "Aditi Ashar", "Asawari Rajvaidya", "Rohit Kulkarni",
+    "Vaishnavi Soni", "Varad Dagdiya", "Ashiwani Deshmukh", "Yash Devidan",
+    "Madhura Navandar", "Devika Chuttat", "Harsh Shahuji", "Gayati Katkar",
+    "Sartak Kolpe", "Gauri Jaikte", "Succhit Jajoo", "Yash Kasliwal", "Krishna Nimodiya",
+    "Rehan Khan", "Anagha Joshi", "Gaurav Malpani", "Kirti Chordiya",
+    "Pawan Girhe", "Sanskar Shauji", "Aditi Dhoot"
+  ];
+
+
+
+  // Result categories with student objects
+  const resultCategories: { id: string; title: string; subtitle: string; bgGradient: string; students: Student[]; stats: { total: string; achievement: string } }[] = [
+    {
+      id: 'ca-foundation',
+      title: 'CA Foundation Toppers',
+      subtitle: 'JPA has toppers in 9 out of last 13 CA Foundation Exams',
+      bgGradient: 'from-blue-500 via-purple-500 to-pink-500',
+      students: caFoundationToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
+      stats: { total: '450+', achievement: 'Qualified Students' }
+    },
+    {
+      id: 'ca-intermediate',
+      title: 'CA Intermediate Excellence',
+      subtitle: 'Outstanding performers in CA Intermediate examinations',
+      bgGradient: 'from-green-400 via-teal-500 to-blue-500',
+      students: caInterToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
+      stats: { total: '280+', achievement: 'Qualified Students' }
+    },
+    {
+      id: 'ca-final',
+      title: 'CA Final Achievers',
+      subtitle: 'Students who conquered the final milestone',
+      bgGradient: 'from-purple-500 via-indigo-500 to-blue-600',
+      students: caFinalToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
+      stats: { total: '150+', achievement: 'Qualified Students' }
+    }
+  ];
+
+  // useEffect(() => {
+  //   resultCategories.forEach(category => {
+  //     console.log(`\nCategory: ${category.title}`);
+  //     category.students.forEach(student => {
+  //       if (photoMap[student.name]) {
+  //         console.log(`✅ ${student.name} → ${photoMap[student.name]}`);
+  //       } else {
+  //         console.log(`❌ ${student.name} → MISSING, using default.jpg`);
+  //       }
+  //     });
+  //   });
+  // }, []); // empty dependency array ensures it runs only once
+
+  // Auto-rotation
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setCurrentCategory((prev) => (prev + 1) % resultCategories.length);
+    }, 6000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [resultCategories.length]);
+
+  const resetAutoRotation = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentCategory((prev) => (prev + 1) % resultCategories.length);
+    }, 6000);
+  };
+
+  const nextCategory = () => {
+    setCurrentCategory((prev) => (prev + 1) % resultCategories.length);
+    resetAutoRotation();
+  };
+
+  const prevCategory = () => {
+    setCurrentCategory((prev) => (prev - 1 + resultCategories.length) % resultCategories.length);
+    resetAutoRotation();
+  };
+
+  const goToCategory = (index: number) => {
+    setCurrentCategory(index);
+    resetAutoRotation();
+  };
+
+
+  const currentResult = resultCategories[currentCategory];
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Replace with <Navbar /> */}
       <Navbar />
 
-      {/* Hero Carousel Section */}
-      <section className="relative overflow-hidden">
-        <div className={`bg-gradient-to-br ${slides[currentSlide].bgGradient} text-white transition-all duration-700 ease-in-out`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[500px] lg:min-h-[600px]">
-              {/* Left Side - Image */}
-              <div className={`flex flex-col items-center transform transition-all duration-1000 ${isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"}`}>
-                <div className="w-full max-w-full h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center mb-4 lg:mb-8">
-                  <img
-                    src={slides[currentSlide].image}
-                    alt="Jaju's Professional Academy"
-                    className="max-w-full max-h-full object-contain transition-opacity duration-500"
-                  />
-                </div>
-              </div>
+      {/* Hero Section - Programs Showcase */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900 text-white">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI4YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyOGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
 
-              {/* Right Side - Content Card */}
-              <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-                <div className="relative">
-                  <div className="w-full max-w-sm mx-auto lg:w-80 h-auto lg:h-96 bg-white-700 rounded-3xl p-6 lg:p-8 flex flex-col items-center justify-center transition-all duration-300">
-                    {/* Logo */}
-                    <img
-                      src={Logo}
-                      alt="Logo"
-                      className="h-20 lg:h-26 w-auto mb-4 lg:mb-6"
-                    />
-                    {/* Dynamic Title */}
-                    <h1 className="text-center text-lg lg:text-xl font-semibold text-gray-900 leading-snug px-2 lg:px-4">
-                      {slides[currentSlide].title}
-                    </h1>
-                    <p className="text-sm lg:text-md text-gray-500 mt-2 mx-2 lg:mx-4 text-center">
-                      {slides[currentSlide].subtitle}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10">
+          {/* Header */}
+          <div className={`text-center mb-12 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
+            <div className="flex items-center justify-center mb-4">
+              <Sparkles className="w-8 h-8 text-yellow-400 mr-2" />
+              <h1 className="text-4xl lg:text-6xl font-bold">Our Programs</h1>
+              <Sparkles className="w-8 h-8 text-yellow-400 ml-2" />
+            </div>
+            <p className="text-xl lg:text-2xl text-purple-200 mt-4">
+              Excel in Your CA Journey with Expert Guidance
+            </p>
+          </div>
+
+          {/* Program Card */}
+          <div className={`transform transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
+            <div className={`relative bg-gradient-to-br ${programs[currentSlide].color} rounded-3xl shadow-2xl overflow-hidden`}>
+              <div className="absolute inset-0 bg-black/10"></div>
+
+              <div className="relative z-10 p-8 lg:p-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Left Side - Content */}
+                  <div className="space-y-6">
+                    <div className="inline-block bg-white/20 backdrop-blur-sm rounded-full p-4">
+                      {programs[currentSlide].icon}
+                    </div>
+
+                    <h2 className="text-4xl lg:text-5xl font-bold">
+                      {programs[currentSlide].title}
+                    </h2>
+
+                    <p className="text-lg lg:text-xl text-white/90">
+                      {programs[currentSlide].description}
                     </p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className='flex justify-center mt-6 lg:mt-8'>
-              <a
-                href={slides[currentSlide].buttonLink}
-                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 lg:py-4 px-6 lg:px-8 rounded-lg text-base lg:text-lg transition-all duration-300 transform hover:scale-105 inline-block"
-              >
-                {slides[currentSlide].buttonText}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Navigation Arrows - Responsive for all devices */}
-        <button
-          onClick={prevSlide}
-          className={`absolute left-2 lg:left-4 top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/30 text-white transition-all duration-300 backdrop-blur-sm rounded-full ${isMobile ? 'p-2' : 'p-3'
-            }`}
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={isMobile ? 20 : 24} />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className={`absolute right-2 lg:right-4 top-1/2 transform -translate-y-1/2 bg-black/20 hover:bg-black/30 text-white transition-all duration-300 backdrop-blur-sm rounded-full ${isMobile ? 'p-2' : 'p-3'
-            }`}
-          aria-label="Next slide"
-        >
-          <ChevronRight size={isMobile ? 20 : 24} />
-        </button>
-
-        {/* Dot Indicators */}
-        <div className="absolute bottom-4 lg:bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex space-x-2 lg:space-x-3">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-300 ${currentSlide === index
-                  ? 'bg-yellow-400 scale-125'
-                  : 'bg-black/50 hover:bg-white/70'
-                  }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Slide Counter - Hidden on small mobile */}
-        <div className="hidden sm:block absolute bottom-4 lg:bottom-8 right-4 lg:right-8 bg-black/20 text-white px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm backdrop-blur-sm">
-          {currentSlide + 1} / {slides.length}
-        </div>
-      </section>
-
-      {/* Features Section */}
-      {/* <section className="py-12 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6 lg:p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex flex-col items-center text-center">
-                  <div className="mb-4 lg:mb-6">{feature.icon}</div>
-                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 lg:mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm lg:text-base">{feature.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Programs Section */}
-      <section id="programs" className="py-12 lg:py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Explore Our Programs
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8 lg:mb-12">
-            {programs.map((program, index) => {
-              const isHovered = hoveredIndex === index;
-
-              return (
-                <div
-                  key={index}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className={`rounded-2xl p-6 lg:p-8 text-center transition-all duration-300 transform hover:scale-105 shadow-lg 
-                  ${isHovered
-                      ? "bg-[#4D14C7] text-white"
-                      : "bg-violet-500 text-white"
-                    }`}
-                >
-                  <div className="flex justify-center mb-4">{program.icon}</div>
-                  <h3 className="text-xl lg:text-2xl font-bold mb-4">{program.title}</h3>
-                  <p className="text-sm opacity-90">{program.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          <p className="text-base lg:text-lg text-gray-700 leading-relaxed font-bold text-center lg:text-left">
-            Availing a variety of affordable CA Foundation courses to help
-            students boost their learnings and practices for the exam.
-          </p>
-        </div>
-      </section>
-
-      {/* Testimonials Section - Mobile Optimized */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Take Words from <span className="text-[#4D14C7]">Our Proud Students!</span>
-            </h2>
-            {/* Mobile swipe hint */}
-            {isMobile && (
-              <p className="text-gray-500 text-sm mt-2">
-                👆 Swipe left or right to view testimonials
-              </p>
-            )}
-          </div>
-
-          <div className="relative">
-            {/* Mobile: Single testimonial with swipe */}
-            {isMobile ? (
-              <div
-                ref={testimonialRef}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                className="flex justify-center overflow-hidden"
-              >
-                <div className="w-full max-w-sm">
-                  <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg">
-                    <img
-                      src={testimonials[currentTestimonial].image}
-                      alt={testimonials[currentTestimonial].author}
-                      className="w-full h-64 object-contain"
-                    />
-                    <div className="p-6 text-center">
-                      <div className="flex justify-center mb-4">
-                        <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                    {/* Stats */}
+                    <div className="flex gap-8 pt-4">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 flex-1">
+                        <div className="text-3xl font-bold">{programs[currentSlide].stats.students}</div>
+                        <div className="text-sm text-white/80">Students Enrolled</div>
                       </div>
-                      <p className="text-base leading-relaxed mb-4 font-medium text-gray-700">
-                        {testimonials[currentTestimonial].text}
-                      </p>
-                      <p className="text-sm font-semibold text-gray-900">
-                        {testimonials[currentTestimonial].author}
-                      </p>
+                      <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 flex-1">
+                        <div className="text-3xl font-bold">{programs[currentSlide].stats.success}</div>
+                        <div className="text-sm text-white/80">Success Rate</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              /* Desktop: All testimonials visible */
-              <div className="flex justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl">
-                  {testimonials.map((testimonial, index) => (
-                    <div
-                      key={index}
-                      className={`bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${index === currentTestimonial
-                        ? 'scale-110 shadow-2xl'
-                        : 'scale-95 opacity-80'
-                        } w-full mx-auto`}
+
+                    <a
+                      href="/admission#application-form"
+                      className="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                     >
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.author}
-                        className="w-full h-86 object-contain mx-auto"
-                      />
-                      <div className="p-6 text-center">
-                        <div className="flex justify-center mb-4">
-                          <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                      Enroll Now
+                    </a>
+                  </div>
+
+                  {/* Right Side - Features */}
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold mb-6">Program Highlights</h3>
+                    {programs[currentSlide].features.map((feature, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center space-x-4 transform transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                      >
+                        <div className="bg-white/20 rounded-full p-2">
+                          <Star className="w-5 h-5" />
                         </div>
-                        <p className="text-base leading-relaxed mb-4 font-medium text-gray-700">
-                          {testimonial.text}
-                        </p>
-                        <p className="text-sm font-semibold text-gray-900">
-                          {testimonial.author}
-                        </p>
+                        <span className="text-lg font-medium">{feature}</span>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
+          </div>
 
-            {/* Navigation */}
-            <div className="flex justify-center items-center mt-8 lg:mt-10 space-x-4">
-              {/* Navigation arrows - Now visible on all devices */}
-              <button
-                onClick={prevTestimonial}
-                className={`bg-gray-200 hover:bg-gray-300 rounded-full transition-colors ${isMobile ? 'p-2' : 'p-3'
+          {/* Navigation */}
+          <div className="mt-8 flex items-center justify-center space-x-8">
+            <button
+              onClick={prevSlide}
+              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
+              aria-label="Previous program"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            <div className="flex space-x-2">
+              {programs.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-yellow-400 w-8' : 'bg-white/50'
+                    }`}
+                  aria-label={`Go to program ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
+              aria-label="Next program"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* All Programs Grid */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">
+            Explore All <span className="text-purple-600">Programs</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {programs.map((program, index) => (
+              <div
+                key={index}
+                onMouseEnter={() => setHoveredProgramIndex(index)}
+                onMouseLeave={() => setHoveredProgramIndex(null)}
+                className={`rounded-2xl p-6 text-center transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer ${hoveredProgramIndex === index
+                  ? 'bg-gradient-to-br from-purple-600 to-blue-600 text-white'
+                  : 'bg-gradient-to-br from-purple-50 to-blue-50 text-gray-900'
                   }`}
-                aria-label="Previous testimonial"
               >
-                <ChevronLeft className={`text-gray-600 ${isMobile ? 'w-5 h-5' : 'w-6 h-6'}`} />
-              </button>
+                <div className="flex justify-center mb-4">{program.icon}</div>
+                <h3 className="text-xl font-bold mb-3">{program.title}</h3>
+                <p className={`text-sm ${hoveredProgramIndex === index ? 'text-white/90' : 'text-gray-600'}`}>
+                  {program.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              {/* Dot indicators */}
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial ? 'bg-[#4D14C7]' : 'bg-gray-300'
-                      }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
+      {/* Results Section */}
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-4">
+              <Trophy className="w-10 h-10 text-yellow-400 mr-3 animate-pulse" />
+              <h2 className="text-3xl lg:text-5xl font-bold">Our Stellar Results</h2>
+              <Trophy className="w-10 h-10 text-yellow-400 ml-3 animate-pulse" />
+            </div>
+            <p className="text-xl text-gray-300 mt-2">Celebrating Success Stories Across All Programs</p>
+          </div>
+
+          <div
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="relative"
+          >
+            {/* Category Card */}
+            <div className="mb-8">
+              <div className={`bg-gradient-to-r ${currentResult.bgGradient} rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden`}>
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="relative z-10">
+                  <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+                    <div className="text-center lg:text-left">
+                      <h3 className="text-3xl lg:text-4xl font-bold mb-2">{currentResult.title}</h3>
+                      <p className="text-lg lg:text-xl text-white/90">{currentResult.subtitle}</p>
+                    </div>
+                    <div className="flex gap-6">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center min-w-[140px]">
+                        <div className="text-4xl font-bold">{currentResult.stats.total}</div>
+                        <div className="text-sm text-white/90 mt-1">{currentResult.stats.achievement}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Students Grid */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 lg:p-8 shadow-xl">
+              <div className={`grid ${isMobile ? 'grid-cols-2 gap-3' : 'grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4'}`}>
+                {currentResult.students.map((student, idx) => (
+                  <div key={idx} className="group relative aspect-square rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:z-10">
+                    <img
+                      src={photoMap[student.name] ?? photoMap["default.jpg"]} // Use mapped photo
+                      alt={student.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-end justify-center p-2">
+                      <p className="text-white text-sm font-semibold text-center">{student.name}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
 
-              <button
-                onClick={nextTestimonial}
-                className={`bg-gray-200 hover:bg-gray-300 rounded-full transition-colors ${isMobile ? 'p-2' : 'p-3'
-                  }`}
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className={`text-gray-600 ${isMobile ? 'w-5 h-5' : 'w-6 h-6'}`} />
+
+              <div className="mt-8 text-center">
+                <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  View All Results
+                </button>
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <button onClick={prevCategory} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full p-3 lg:p-4 transition-all duration-300 shadow-xl z-20">
+              <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8" />
+            </button>
+            <button onClick={nextCategory} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full p-3 lg:p-4 transition-all duration-300 shadow-xl z-20">
+              <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8" />
+            </button>
+          </div>
+
+          {/* Category Indicators */}
+          <div className="mt-8 lg:mt-12 flex flex-wrap justify-center gap-2 lg:gap-3">
+            {resultCategories.map((category, index) => (
+              <button key={category.id} onClick={() => goToCategory(index)} className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${currentCategory === index ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white scale-110 shadow-lg' : 'bg-white/10 text-gray-300 hover:bg-white/20'}`}>
+                {category.title.split(' ').slice(0, isMobile ? 2 : 3).join(' ')}
               </button>
+            ))}
+          </div>
+
+          {/* Progress Bar */}
+          <div className="mt-8 max-w-3xl mx-auto">
+            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 rounded-full" style={{ width: `${((currentCategory + 1) / resultCategories.length) * 100}%` }} />
+            </div>
+            <div className="flex justify-between mt-2 text-sm text-gray-400">
+              <span>Category {currentCategory + 1} of {resultCategories.length}</span>
+              <span>Auto-rotating every 6 seconds</span>
             </div>
           </div>
         </div>
       </section>
 
+
       {/* Visit Us Section */}
-      <section className="py-12 lg:py-20 bg-gray-100">
+      <section className="py-12 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 lg:mb-8">VISIT US</h2>
-          <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg max-w-2xl mx-auto">
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 lg:p-8 shadow-lg max-w-2xl mx-auto">
             <div className="flex items-center justify-center mb-4">
-              <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-[#4D14C7] mr-3" />
+              <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-purple-600 mr-3" />
               <h3 className="text-xl lg:text-2xl font-semibold text-gray-900">Our Location</h3>
             </div>
-            <p className="text-gray-600 mb-6 text-sm lg:text-base">Come visit our modern facilities and meet our expert faculty</p>
-            <button className="bg-[#4D14C7] hover:bg-violet-700 text-white font-bold py-3 px-6 lg:px-8 rounded-lg transition-colors text-sm lg:text-base">
+            <p className="text-gray-600 mb-6 text-sm lg:text-base">
+              Come visit our modern facilities and meet our expert faculty
+            </p>
+            <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 lg:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm lg:text-base shadow-lg">
               Get Directions
             </button>
           </div>
         </div>
       </section>
 
-      <Footer />
+      {/* Replace with <Footer /> */}
+      <div className="bg-gray-900 text-white p-8 text-center">
+        <p>&copy; 2024 Jaju's Professional Academy. All rights reserved.</p>
+      </div>
     </div>
   );
 };

@@ -368,7 +368,7 @@ const Home = () => {
   const currentResult = resultCategories[currentCategory];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100" style={{ fontFamily: '"Inter", "Roboto", sans-serif' }}>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100" >
       <Navbar />
 
       {/* Hero Section - Programs Showcase */}

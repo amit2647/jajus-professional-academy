@@ -17,28 +17,30 @@ function Navbar() {
         <nav className="bg-white shadow-lg sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    <div className="flex items-center justify-between h-16 px-6">
-                        {/* Logo + Title */}
-                        <Link to="/" className="flex items-center space-x-3">
-                            <img src={Logo} alt="Logo" className="h-12 w-auto" />
-                            <h1 className="text-2xl font-bold text-gray-800 tracking-tight">
-                                Jaju's <span className="text-violet-700">Professional Academy</span>
-                            </h1>
-                        </Link>
-                    </div>
+                    {/* Logo + Title */}
+                    <Link to="/" className="flex items-center space-x-3">
+                        <img src={Logo} alt="Logo" className="h-10 sm:h-12 w-auto" />
+                        <h1 className="font-bold text-gray-800 tracking-tight text-lg sm:text-2xl leading-tight">
+                            Jaju's <span className="text-violet-700">Professional Academy</span>
+                        </h1>
+                    </Link>
+
+                    {/* Mobile menu button */}
                     <div className="md:hidden">
                         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-900">
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                     </div>
+
+                    {/* Desktop Menu */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
+                            <Link to="/" className={getLinkClass('/')}>
+                                HOME
+                            </Link>
                             <Link to="/admission" className={getLinkClass('/admission')}>
                                 COURSES
                             </Link>
-                            {/* <Link to="/programs" className={getLinkClass('/programs')}>
-                                PROGRAM
-                            </Link> */}
                             <Link to="/about" className={getLinkClass('/about')}>
                                 ABOUT US
                             </Link>
@@ -48,15 +50,17 @@ function Navbar() {
                         </div>
                     </div>
                 </div>
+
+                {/* Mobile Menu */}
                 {isOpen && (
                     <div className="md:hidden">
                         <div className="flex flex-col items-center space-y-4 py-4">
+                            <Link to="/" className={getLinkClass('/')} onClick={() => setIsOpen(false)}>
+                                HOME
+                            </Link>
                             <Link to="/admission" className={getLinkClass('/admission')} onClick={() => setIsOpen(false)}>
                                 COURSES
                             </Link>
-                            {/* <Link to="/programs" className={getLinkClass('/programs')} onClick={() => setIsOpen(false)}>
-                                PROGRAM
-                            </Link> */}
                             <Link to="/about" className={getLinkClass('/about')} onClick={() => setIsOpen(false)}>
                                 ABOUT US
                             </Link>

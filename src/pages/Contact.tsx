@@ -77,28 +77,56 @@ const Contact = () => {
                         <h2 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
                         <p className="text-xl text-gray-600">We're here to help you every step of the way</p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    {/* Contact Info Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        {/* Phone */}
                         <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
                             <Phone className="w-12 h-12 text-[#4D14C7] mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
-                            <p className="text-gray-600">+91 999 332 999</p>
-                            <p className="text-gray-600">Mon-Sat: 9 AM - 6 PM</p>
+                            <span>
+                                +91 9028272762
+                                <br />
+                                +91 9359794886
+                            </span>
                         </div>
+
+                        {/* Email */}
                         <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
                             <Mail className="w-12 h-12 text-[#4D14C7] mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
-                            <p className="text-gray-600">admissions@jajuacademy.com</p>
+                            <p className="text-gray-600">Jajusprofessionalacademy@gmail.com</p>
                             <p className="text-gray-600">We'll respond within 24 hours</p>
                         </div>
-                        <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
-                            <MapPin className="w-12 h-12 text-[#4D14C7] mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
-                            <p className="text-gray-600">Jaju's Professional Academy</p>
-                            <p className="text-gray-600">Schedule a campus visit</p>
+                    </div>
+
+                    {/* Location Row */}
+                    <div className="flex justify-center">
+                        <div className="text-center p-8 bg-gray-50 rounded-2xl shadow-lg w-full md:w-3/4 lg:w-2/3">
+                            <div className="flex flex-col items-center">
+                                <div className="flex items-center justify-center mb-4">
+                                    <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-violet-600 mr-3" />
+                                    <h3 className="text-xl lg:text-2xl font-semibold text-gray-900">Our Location</h3>
+                                </div>
+
+                                <div className="w-full h-64 lg:h-96 rounded-2xl overflow-hidden shadow-lg border border-violet-200">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.5281878602793!2d75.33292503782774!3d19.87433524149135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb987469ba1515%3A0x1f5fd27a76a6b06b!2sJaju%20Professional%20Academy!5e0!3m2!1sen!2sin!4v1761569288710!5m2!1sen!2sin"
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0 }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="Jaju Professional Academy Location"
+                                    ></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
 
             {/* Contact Form */}
             <section className="py-20 bg-gray-100">

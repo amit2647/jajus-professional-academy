@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useCallback } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, BookOpen, Users, Award, Star, Trophy, Target, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { photoMap } from "../data/photoMap";
 import Footer from '../components/Footer';
@@ -397,13 +398,13 @@ const Home = () => {
                     </div>
                     <h2 className="text-3xl lg:text-4xl font-extrabold">{programs[currentSlide].title}</h2>
                     <p className="text-lg lg:text-xl">{programs[currentSlide].description}</p>
-                    <a
-                      href="/admission#application-form"
-                      className="inline-block bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    <Link
+                      to="/admission#application-form"
+                      className="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                       aria-label="Enroll in our programs"
                     >
                       Enroll Now
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="space-y-4">
@@ -524,10 +525,10 @@ const Home = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 lg:p-8 shadow-lg">
               <div
                 className={`grid ${isMobile
-                    ? 'grid-cols-2 gap-4'
-                    : currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
-                      ? 'grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-10 justify-center'
-                      : 'grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6'
+                  ? 'grid-cols-2 gap-4'
+                  : currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
+                    ? 'grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-10 justify-center'
+                    : 'grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6'
                   } ${currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers' ? 'justify-items-center' : ''}`}
               >
                 {currentResult.students.map((student, idx) => (
@@ -538,8 +539,8 @@ const Home = () => {
                     {/* Photo */}
                     <div
                       className={`rounded-xl overflow-hidden shadow-md border border-violet-200 ${currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
-                          ? 'w-28 h-28 sm:w-32 sm:h-32'
-                          : 'w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28'
+                        ? 'w-28 h-28 sm:w-32 sm:h-32'
+                        : 'w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28'
                         }`}
                     >
                       <img
@@ -553,8 +554,8 @@ const Home = () => {
                     {/* Name */}
                     <p
                       className={`mt-3 font-bold text-gray-900 leading-snug ${currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
-                          ? 'text-lg sm:text-xl'
-                          : 'text-sm'
+                        ? 'text-lg sm:text-xl'
+                        : 'text-sm'
                         }`}
                     >
                       {student.name}
@@ -565,8 +566,8 @@ const Home = () => {
                       <div className="flex items-center justify-center mt-1 gap-1">
                         <Trophy
                           className={`${currentResult.id === 'air-ranks'
-                              ? 'text-amber-500'
-                              : 'text-amber-500'
+                            ? 'text-amber-500'
+                            : 'text-amber-500'
                             } w-4 h-4 sm:w-5 sm:h-5 shrink-0`}
                         />
                         <span className="text-[14px] sm:text-[15px] text-violet-700 font-semibold leading-tight tracking-wide">
@@ -602,9 +603,23 @@ const Home = () => {
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-4 xl:px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-6 lg:mb-8">VISIT US</h2>
           <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl p-6 lg:p-8 shadow-lg max-w-2xl mx-auto border border-violet-200">
-            <div className="flex items-center justify-center mb-4">
-              <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-violet-600 mr-3" />
-              <h3 className="text-xl lg:text-2xl font-semibold text-gray-900">Our Location</h3>
+            <div className="flex flex-col items-center">
+              <div className="flex items-center justify-center mb-4">
+                <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-violet-600 mr-3" />
+                <h3 className="text-xl lg:text-2xl font-semibold text-gray-900">Our Location</h3>
+              </div>
+
+              <div className="w-full max-w-4xl h-64 lg:h-96 rounded-2xl overflow-hidden shadow-lg border border-violet-200">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.5281878602793!2d75.33292503782774!3d19.87433524149135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb987469ba1515%3A0x1f5fd27a76a6b06b!2sJaju%20Professional%20Academy!5e0!3m2!1sen!2sin!4v1761569288710!5m2!1sen!2sin"
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
             <p className="text-gray-600 mb-6 text-sm lg:text-base">
               Come visit our modern facilities and meet our expert faculty

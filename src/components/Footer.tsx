@@ -41,7 +41,7 @@ function Footer() {
                             </div>
                             <div className="flex items-center">
                                 <Mail className="w-4 h-4 mr-2" />
-                                <span>example@gmail.com</span>
+                                <span>Jajusprofessionalacademy@gmail.com</span>
                             </div>
                         </div>
                     </div>

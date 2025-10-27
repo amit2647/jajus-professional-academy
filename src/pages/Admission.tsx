@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Calendar, Clock, Users, CheckCircle, FileText, CreditCard, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { CheckCircle, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -44,40 +44,29 @@ const AdmissionPage = () => {
         }
     }, [location.hash]);
 
-    const admissionProcess = [
-        {
-            step: "1",
-            title: "Application Form",
-            description: "Fill out the online application form with your personal and academic details",
-            icon: <FileText className="w-8 h-8" />
-        },
-        {
-            step: "2",
-            title: "Document Verification",
-            description: "Submit required documents for verification and eligibility check",
-            icon: <CheckCircle className="w-8 h-8" />
-        },
-        {
-            step: "3",
-            title: "Fee Payment",
-            description: "Complete the fee payment through our secure payment gateway",
-            icon: <CreditCard className="w-8 h-8" />
-        },
-        {
-            step: "4",
-            title: "Confirmation",
-            description: "Receive confirmation and access to classes and study materials",
-            icon: <Users className="w-8 h-8" />
-        }
-    ];
-
     const courses = [
+        {
+            name: "XI & XII Commerce",
+            duration: "1-2 years",
+            batchSize: "30-35 students",
+            fee: "₹20,000",
+            features: ["Offline & Online", "Regular Assessments", "Career Guidance", "Foundation Building"],
+            nextBatch: "June 1, 2025"
+        },
+        {
+            name: "XI & XII Foundation",
+            duration: "1-2 years",
+            batchSize: "30-35 students",
+            fee: "₹20,000",
+            features: ["Offline", "Regular Assessments", "Career Guidance", "Foundation Building"],
+            nextBatch: "June 1, 2025"
+        },
         {
             name: "CA Foundation",
             duration: "4-6 months",
             batchSize: "25-30 students",
             fee: "₹25,000",
-            features: ["Comprehensive Study Material", "Mock Tests", "Doubt Clearing Sessions", "Progress Tracking"],
+            features: ["Offline", "Mock Tests", "Doubt Clearing Sessions", "Progress Tracking"],
             nextBatch: "March 15, 2025"
         },
         {
@@ -85,26 +74,25 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Advanced Study Material", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
+            features: ["Offline", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
             nextBatch: "April 1, 2025"
         },
         {
-            name: "XI & XII Commerce",
-            duration: "1-2 years",
-            batchSize: "30-35 students",
-            fee: "₹20,000",
-            features: ["Board Exam Preparation", "Regular Assessments", "Career Guidance", "Foundation Building"],
-            nextBatch: "June 1, 2025"
+            name: "CA Final",
+            duration: "8-12 months",
+            batchSize: "20-25 students",
+            fee: "₹45,000",
+            features: ["Offline", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
+            nextBatch: "April 1, 2025"
+        },
+        {
+            name: "CS-EET",
+            duration: "8-12 months",
+            batchSize: "20-25 students",
+            fee: "₹45,000",
+            features: ["Offline", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
+            nextBatch: "April 1, 2025"
         }
-    ];
-
-    const documents = [
-        "10th Mark Sheet",
-        "12th Mark Sheet (if applicable)",
-        "Graduation Certificate (for CA Intermediate)",
-        "Aadhar Card",
-        "Passport Size Photographs (4)",
-        "Transfer Certificate (if applicable)"
     ];
 
     const handleInputChange = (
@@ -162,20 +150,10 @@ const AdmissionPage = () => {
             {/* Hero Section */}
             <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-5xl font-bold mb-6">Admission Open</h1>
+                    <h1 className="text-5xl font-bold mb-6">Courses</h1>
                     <p className="text-xl text-violet-100 mb-8 max-w-3xl mx-auto">
                         Join thousands of successful CA professionals. Start your journey with India's most trusted CA coaching institute.
                     </p>
-                    <div className="flex justify-center space-x-8 text-sm">
-                        <div className="flex items-center">
-                            <Calendar className="w-5 h-5 mr-2" />
-                            <span>Admissions Open Till: March 31, 2025</span>
-                        </div>
-                        <div className="flex items-center">
-                            <Users className="w-5 h-5 mr-2" />
-                            <span>Limited Seats Available</span>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -192,19 +170,6 @@ const AdmissionPage = () => {
                             <div key={index} className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-violet-500 hover:shadow-xl transition-all duration-300">
                                 <div className="text-center mb-6">
                                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{course.name}</h3>
-                                    <div className="text-3xl font-bold text-violet-600 mb-4">{course.fee}</div>
-                                    <div className="text-sm text-gray-600 mb-2">
-                                        <Clock className="w-4 h-4 inline mr-1" />
-                                        Duration: {course.duration}
-                                    </div>
-                                    <div className="text-sm text-gray-600 mb-2">
-                                        <Users className="w-4 h-4 inline mr-1" />
-                                        Batch Size: {course.batchSize}
-                                    </div>
-                                    <div className="text-sm text-green-600 font-semibold">
-                                        <Calendar className="w-4 h-4 inline mr-1" />
-                                        Next Batch: {course.nextBatch}
-                                    </div>
                                 </div>
 
                                 <div className="mb-8">
@@ -238,66 +203,6 @@ const AdmissionPage = () => {
 
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Admission Process */}
-            <section className="py-20 bg-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Admission Process</h2>
-                        <p className="text-xl text-gray-600">Simple and straightforward admission process</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        {admissionProcess.map((process, index) => (
-                            <div key={index} className="text-center">
-                                <div className="bg-violet-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                                    {process.step}
-                                </div>
-                                <div className="bg-white rounded-2xl p-6 shadow-lg h-full">
-                                    <div className="flex justify-center mb-4 text-violet-600">
-                                        {process.icon}
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
-                                    <p className="text-gray-600 text-sm">{process.description}</p>
-                                </div>
-                                {index < admissionProcess.length - 1 && (
-                                    <div className="hidden md:block absolute top-8 left-full w-8 h-0.5 bg-violet-300 transform translate-x-4"></div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Required Documents */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Required Documents</h2>
-                        <p className="text-xl text-gray-600">Please ensure you have these documents ready for admission</p>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-2xl p-8 max-w-3xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {documents.map((doc, index) => (
-                                <div
-                                    key={index}
-                                    className="flex items-start p-4 bg-white rounded-lg shadow-sm"
-                                >
-                                    <FileText className="w-5 h-5 text-violet-600 mr-3 mt-1 flex-shrink-0" />
-                                    <p className="text-gray-700 break-words flex-1">{doc}</p>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                            <p className="text-yellow-800 text-sm">
-                                <strong>Note:</strong> All documents should be original with photocopies.
-                                Documents in languages other than English/Hindi should be translated and notarized.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -370,9 +275,12 @@ const AdmissionPage = () => {
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                     >
                                         <option value="">Select a course</option>
+                                        <option value="XI & XII Commerce">XI & XII Commerce</option>
+                                        <option value="XI & XII Foundation">XI & XII Foundation</option>
                                         <option value="CA Foundation">CA Foundation</option>
                                         <option value="CA Intermediate">CA Intermediate</option>
-                                        <option value="XI & XII Commerce">XI & XII Commerce</option>
+                                        <option value="CA Final">CA Final</option>
+                                        <option value="CS-EET">CS-EET</option>
                                     </select>
                                 </div>
                             </div>
@@ -433,7 +341,8 @@ const AdmissionPage = () => {
                         <div className="text-center p-8 bg-gray-50 rounded-2xl">
                             <Phone className="w-12 h-12 text-violet-600 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
-                            <p className="text-gray-600">+91 999 332 999</p>
+                            <p className="text-gray-600">+91 9028272762</p>
+                            <p className="text-gray-600">+91 9359794886</p>
                             <p className="text-gray-600">Mon-Sat: 9 AM - 6 PM</p>
                         </div>
 

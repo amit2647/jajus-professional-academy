@@ -34,11 +34,11 @@ function Navbar() {
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
                             <Link to="/admission" className={getLinkClass('/admission')}>
-                                ADMISSION
+                                COURSES
                             </Link>
-                            <Link to="/programs" className={getLinkClass('/programs')}>
+                            {/* <Link to="/programs" className={getLinkClass('/programs')}>
                                 PROGRAM
-                            </Link>
+                            </Link> */}
                             <Link to="/about" className={getLinkClass('/about')}>
                                 ABOUT US
                             </Link>
@@ -52,11 +52,11 @@ function Navbar() {
                     <div className="md:hidden">
                         <div className="flex flex-col items-center space-y-4 py-4">
                             <Link to="/admission" className={getLinkClass('/admission')} onClick={() => setIsOpen(false)}>
-                                ADMISSION
+                                COURSES
                             </Link>
-                            <Link to="/programs" className={getLinkClass('/programs')} onClick={() => setIsOpen(false)}>
+                            {/* <Link to="/programs" className={getLinkClass('/programs')} onClick={() => setIsOpen(false)}>
                                 PROGRAM
-                            </Link>
+                            </Link> */}
                             <Link to="/about" className={getLinkClass('/about')} onClick={() => setIsOpen(false)}>
                                 ABOUT US
                             </Link>

@@ -2,6 +2,29 @@ import { Link } from 'react-router-dom';
 import { Users, Award, BookOpen } from 'lucide-react';
 import Navbar from '../components/Navbar'; // Adjust path based on your file structure
 import Footer from '../components/Footer';
+import { photoMap } from "../data/photoMap";
+
+const teachers = [
+    { name: "Nikhi Jaju Sir", photo: photoMap["Nikhi Sir"], title: "Head of Classes & Academic Director" },
+    { name: "Pooja Jaju Madam", photo: photoMap["Pooja Jaju"], title: "Faculty - Business Studies" },
+    { name: "Sunil Sharma Sir", photo: photoMap["Sunil Sharma Sir"], title: "Faculty - Accounting" },
+    { name: "Swapnil Sir", photo: photoMap["Swapnil Sir"], title: "Faculty - Taxation" },
+    { name: "Sagar Mantri Sir", photo: photoMap["Sagar Mantri Sir"], title: "Faculty - Cost & Management" },
+    { name: "Anuj Totla Sir", photo: photoMap["Anuj Totla Sir"], title: "Faculty - Economics & Law" },
+    { name: "Ganesh Agharde Sir", photo: photoMap["Ganesh Agharde Sir"], title: "Faculty - Statistics & FM" },
+    { name: "Anand Dargad Sir", photo: photoMap["Anand Dargad Sir"], title: "Faculty - Business Studies" },
+    { name: "Shailes Dhad Sir", photo: photoMap["Shailes Dhad Sir"], title: "Faculty - Audit & Assurance" },
+    { name: "B B Ghuge sir", photo: photoMap["B B Ghuge sir"], title: "Faculty - Accounting" },
+    { name: "Krushna Kabra Sir", photo: photoMap["Krishna Kabra"], title: "Faculty - Taxation" },
+    { name: "Darshan Patni Sir", photo: photoMap["Daran Pat"], title: "Faculty - Cost & Management" },
+    { name: "Komal Rathi Madam", photo: photoMap["Komal Rathi Madam"], title: "Faculty - Business Law" },
+    { name: "Payal Sarda Madam", photo: photoMap["Payal Sarda Madam"], title: "Faculty - Economics" },
+    { name: "Kajal Madam", photo: photoMap["Kajal Madam"], title: "Faculty - Mathematics" },
+    { name: "Shrikant Mundada", photo: photoMap["Shrikant Mundada"], title: "Faculty - Strategic Management" },
+    { name: "Ravi Lohiya", photo: photoMap["Ravi Lohiya"], title: "Faculty - Information Technology" },
+    { name: "Gauri Mundada", photo: photoMap["Gauri Mundada"], title: "Faculty - Communication Skills" },
+];
+
 
 const AboutUs = () => {
     return (
@@ -24,6 +47,54 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
+            {/* Faculty Section */}
+            <section className="py-16 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Faculty</h2>
+                        <p className="text-lg text-gray-600">Meet the pillars of JPA’s excellence</p>
+                    </div>
+
+                    {/* Head of Classes */}
+                    <div className="mb-16 flex flex-col items-center">
+                        <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-violet-400">
+                            <img
+                                src={photoMap["Nikhi Sir"]}
+                                alt="Nikhil Sir"
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                        </div>
+                        <h3 className="mt-4 text-2xl font-bold text-gray-900">Nikhil Jaju</h3>
+                        <p className="text-gray-600 text-sm sm:text-base mt-1">
+                            Head of Classes & Academic Director
+                        </p>
+                    </div>
+
+                    {/* All Other Faculty */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        {teachers
+                            .filter(t => t.name !== "Nikhi Jaju Sir")
+                            .map((teacher, idx) => (
+                                <div key={idx} className="flex flex-col items-center">
+                                    <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg overflow-hidden shadow-md border border-violet-200">
+                                        <img
+                                            src={teacher.photo}
+                                            alt={teacher.name}
+                                            className="w-full h-full object-cover"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <p className="mt-2 text-center text-sm font-medium text-gray-800">
+                                        {teacher.name}
+                                    </p>
+                                </div>
+                            ))}
+                    </div>
+                </div>
+            </section>
+
+
 
             {/* Mission Section */}
             <section className="py-20 bg-white">
@@ -67,7 +138,7 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {/* Achievements Section */}
+            {/* Achievements Section
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
@@ -92,7 +163,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Footer */}
             <Footer />

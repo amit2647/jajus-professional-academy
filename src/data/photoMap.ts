@@ -129,7 +129,7 @@ export const photoMap: Record<string, string> = {
     "Ritika Mandhani": RitikaMandhani,
     "Siddhi Runwal": SiddhiRunwal,
     "Aarya Patil": AaryaPatil,
-    "Bhavika Muttha": BhavikaMuttha,
+    "Bhavika Mutha": BhavikaMuttha,
     "Khushi Bhutada": KhushiBhutada,
     "Om Ajmera": OmAjmera,
     "Ritika Sonwane": RitikaSonwane,

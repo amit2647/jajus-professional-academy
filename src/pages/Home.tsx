@@ -3,15 +3,12 @@ import { useCallback } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, BookOpen, Users, Award, Star, Trophy, Target, Sparkles } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { photoMap } from "../data/photoMap";
-
-// Import your actual components and images
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
-// import Logo from '../assets/nav_logo.png';
+import Footer from '../components/Footer';
 
 interface Student {
   name: string;
   photo: string;
+  description?: string;
 }
 
 const Home = () => {
@@ -45,34 +42,44 @@ const Home = () => {
     {
       title: "CA Foundation",
       description: "Build a strong foundation for your CA journey with comprehensive courses",
-      icon: <BookOpen className="w-12 h-12" />,
-      features: ["Expert Faculty", "Study Materials", "Mock Tests", "Doubt Sessions"],
-      color: "from-purple-600 to-blue-600",
+      icon: <BookOpen className="w-12 h-12 text-white-500" />,
+      features: ["Expert Faculty", "Study Materials", "Test Series", "Crash batches"],
       stats: { students: "500+", success: "85%" }
     },
     {
       title: "CA Intermediate",
       description: "Advanced preparation with industry experts and practical approach",
-      icon: <Users className="w-12 h-12" />,
-      features: ["Live Classes", "Case Studies", "Revision Classes", "Personal Mentoring"],
-      color: "from-blue-600 to-cyan-600",
+      icon: <Users className="w-12 h-12 text-white-500" />,
+      features: ["Group I", "Group II", "Test Series", "Mentorship"],
       stats: { students: "300+", success: "78%" }
     },
     {
       title: "CA Final",
       description: "Master the final stage with strategic guidance and exam techniques",
-      icon: <Award className="w-12 h-12" />,
+      icon: <Award className="w-12 h-12 text-white-500" />,
       features: ["Strategic Planning", "Advanced Topics", "Interview Prep", "Career Guidance"],
-      color: "from-cyan-600 to-teal-600",
       stats: { students: "200+", success: "72%" }
     },
     {
       title: "XI & XII Commerce",
       description: "Strong commerce foundation for school students aspiring for CA",
-      icon: <Target className="w-12 h-12" />,
+      icon: <Target className="w-12 h-12 text-white-500" />,
       features: ["School Curriculum", "CA Foundation Prep", "Regular Assessments", "Career Counseling"],
-      color: "from-teal-600 to-green-600",
       stats: { students: "400+", success: "90%" }
+    },
+    {
+      title: "XI & XII Foundation",
+      description: "Strong foundation for school students aspiring for CA",
+      icon: <Target className="w-12 h-12 text-white-500" />,
+      features: ["School Curriculum", "CA Foundation Prep", "Regular Assessments", "Career Counseling"],
+      stats: { students: "400+", success: "90%" }
+    },
+    {
+      title: "CS-EET",
+      description: "Comprehensive preparation for the CS Executive Entrance Test",
+      icon: <Sparkles className="w-12 h-12 text-white-500" />,
+      features: ["Expert Faculty", "Study Materials", "Mock Tests", "Doubt Sessions"],
+      stats: { students: "300+", success: "80%" }
     }
   ];
 
@@ -209,22 +216,11 @@ const Home = () => {
     };
   }, [resetAutoPlay]);
 
-  // Check if device is mobile
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
-
   const photoFiles = import.meta.glob('../assets/photos/*.{jpg,jpeg,png}', { eager: true, import: 'default' });
-
 
   // Match student names to filenames
   Object.entries(photoFiles).forEach(([path, module]) => {
-    const fileName = path.split('/').pop() as string; // get 'Bhakti Mundada.jpg'
+    const fileName = path.split('/').pop() as string;
     photoMap[fileName] = module as string;
   });
 
@@ -264,15 +260,61 @@ const Home = () => {
     "Pawan Girhe", "Sanskar Shauji", "Aditi Dhoot"
   ];
 
+  // CS-EET Toppers
+  const csEETToppers = [
+    "Karthiki Kulkarni", "Khushi Karwa", "Mithali Chudiwal", "Pratiksha Lonkar", "Sanskruti Rathi", "Swanandi Deshmukh", "Bhoomi Malani", "Bhavika Mutha"
+  ]
 
+  // AIR Rank holders
+  const airRanks = [
+    { name: "Rajan Kabra", description: "AIR 1, Highest Marks in CA foundation july 2021" },
+    { name: "Tanisha Boramanikar", description: "1st in Maharashtra , HSC Maharastra Board May 2024" },
+    { name: "Karan Choudhari", description: "AIR 48, CA Inter May 2024" }
+  ];
+
+  // Marathwada Toppers
+  const marathwadaToppers = [
+    { name: "Bhakti Mundada", description: "1st in Marathwada (Jan-24)" },
+    { name: "Rishee Sethi", description: "1st in Chh. Sambhajinagar (June-24)" },
+    { name: "Anushka Bora", description: "2nd in Marathwada (June-24)" },
+    { name: "Bhoomi Malani", description: "1st in Marathwada (Dec-23)" },
+    { name: "Sarvesh Kabra", description: "1st in Marathwada (June-23)" },
+    { name: "Yash Agrawal", description: "1st in Marathwada (Dec-22)" },
+    { name: "Naman Agrawal", description: "1st in Marathwada (Nov-21)" },
+    { name: "Rajan Kabra", description: "All India Rank 1 (July-21)" },
+    { name: "Ritika Chandak", description: "1st in Marathwada (Jan-21)" },
+    { name: "Rudransh Sharma", description: "2nd in Chh. Sambhajinagar (Dec-20)" },
+    { name: "Aakansha Harne", description: "1st in Marathwada (AIR 44) (June-19)" }
+  ];
 
   // Result categories with student objects
-  const resultCategories: { id: string; title: string; subtitle: string; bgGradient: string; students: Student[]; stats: { total: string; achievement: string } }[] = [
+  const resultCategories: { id: string; title: string; subtitle: string; students: Student[]; stats: { total: string; achievement: string } }[] = [
+    {
+      id: 'air-ranks',
+      title: 'AIR Ranks',
+      subtitle: 'All India Rank holders in CA Exams',
+      students: airRanks.map(s => ({
+        name: s.name,
+        description: s.description,
+        photo: photoMap[s.name] || 'default.jpg'
+      })),
+      stats: { total: '3', achievement: 'Top AIR Ranks' }
+    },
+    {
+      id: 'marathwada-toppers',
+      title: 'Marathwada Toppers',
+      subtitle: 'Top performers from the Marathwada region',
+      students: marathwadaToppers.map(s => ({
+        name: s.name,
+        description: s.description,
+        photo: photoMap[s.name] || 'default.jpg'
+      })),
+      stats: { total: '11', achievement: 'Top Marathwada Toppers' }
+    },
     {
       id: 'ca-foundation',
       title: 'CA Foundation Toppers',
       subtitle: 'JPA has toppers in 9 out of last 13 CA Foundation Exams',
-      bgGradient: 'from-blue-500 via-purple-500 to-pink-500',
       students: caFoundationToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
       stats: { total: '450+', achievement: 'Qualified Students' }
     },
@@ -280,7 +322,6 @@ const Home = () => {
       id: 'ca-intermediate',
       title: 'CA Intermediate Excellence',
       subtitle: 'Outstanding performers in CA Intermediate examinations',
-      bgGradient: 'from-green-400 via-teal-500 to-blue-500',
       students: caInterToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
       stats: { total: '280+', achievement: 'Qualified Students' }
     },
@@ -288,24 +329,17 @@ const Home = () => {
       id: 'ca-final',
       title: 'CA Final Achievers',
       subtitle: 'Students who conquered the final milestone',
-      bgGradient: 'from-purple-500 via-indigo-500 to-blue-600',
       students: caFinalToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
       stats: { total: '150+', achievement: 'Qualified Students' }
+    },
+    {
+      id: 'cs-eet',
+      title: 'CS-EET Toppers',
+      subtitle: 'Exceptional achievers in the CS Executive Entrance Test',
+      students: csEETToppers.map(name => ({ name, photo: photoMap[name] || 'default.jpg' })),
+      stats: { total: '300+', achievement: 'Qualified Students' }
     }
   ];
-
-  // useEffect(() => {
-  //   resultCategories.forEach(category => {
-  //     console.log(`\nCategory: ${category.title}`);
-  //     category.students.forEach(student => {
-  //       if (photoMap[student.name]) {
-  //         console.log(`✅ ${student.name} → ${photoMap[student.name]}`);
-  //       } else {
-  //         console.log(`❌ ${student.name} → MISSING, using default.jpg`);
-  //       }
-  //     });
-  //   });
-  // }, []); // empty dependency array ensures it runs only once
 
   // Auto-rotation
   useEffect(() => {
@@ -325,97 +359,62 @@ const Home = () => {
     }, 6000);
   };
 
-  const nextCategory = () => {
-    setCurrentCategory((prev) => (prev + 1) % resultCategories.length);
-    resetAutoRotation();
-  };
-
-  const prevCategory = () => {
-    setCurrentCategory((prev) => (prev - 1 + resultCategories.length) % resultCategories.length);
-    resetAutoRotation();
-  };
-
   const goToCategory = (index: number) => {
     setCurrentCategory(index);
     resetAutoRotation();
   };
 
-
   const currentResult = resultCategories[currentCategory];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Replace with <Navbar /> */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100" style={{ fontFamily: '"Inter", "Roboto", sans-serif' }}>
       <Navbar />
 
       {/* Hero Section - Programs Showcase */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900 text-white">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI4YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyOGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-20">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjYjlkNGZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PHBhdGggZD0iTTAgMGg2MHYxSDB6TTYwIDYwaDBWMmg2MHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10">
-          {/* Header */}
-          <div className={`text-center mb-12 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
+        {/* Increased max-width and adjusted padding */}
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-4 xl:px-6 relative z-10">
+          <div className={`text-center mb-12 transform transition-all duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
             <div className="flex items-center justify-center mb-4">
-              <Sparkles className="w-8 h-8 text-yellow-400 mr-2" />
-              <h1 className="text-4xl lg:text-6xl font-bold">Our Programs</h1>
-              <Sparkles className="w-8 h-8 text-yellow-400 ml-2" />
+              <Sparkles className="w-8 h-8 text-white mr-2" />
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold">Our Programs</h1>
+              <Sparkles className="w-8 h-8 text-white ml-2" />
             </div>
-            <p className="text-xl lg:text-2xl text-purple-200 mt-4">
+            <p className="text-lg lg:text-xl mt-4">
               Excel in Your CA Journey with Expert Guidance
             </p>
           </div>
 
-          {/* Program Card */}
-          <div className={`transform transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
-            <div className={`relative bg-gradient-to-br ${programs[currentSlide].color} rounded-3xl shadow-2xl overflow-hidden`}>
-              <div className="absolute inset-0 bg-black/10"></div>
-
+          <div className={`transform transition-all duration-700 ease-out ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
+            <div className="relative bg-white/10 rounded-3xl shadow-lg border border-white/20 overflow-hidden">
               <div className="relative z-10 p-8 lg:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                  {/* Left Side - Content */}
                   <div className="space-y-6">
-                    <div className="inline-block bg-white/20 backdrop-blur-sm rounded-full p-4">
+                    <div className="inline-block bg-white/20 rounded-full p-4">
                       {programs[currentSlide].icon}
                     </div>
-
-                    <h2 className="text-4xl lg:text-5xl font-bold">
-                      {programs[currentSlide].title}
-                    </h2>
-
-                    <p className="text-lg lg:text-xl text-white/90">
-                      {programs[currentSlide].description}
-                    </p>
-
-                    {/* Stats */}
-                    <div className="flex gap-8 pt-4">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 flex-1">
-                        <div className="text-3xl font-bold">{programs[currentSlide].stats.students}</div>
-                        <div className="text-sm text-white/80">Students Enrolled</div>
-                      </div>
-                      <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 flex-1">
-                        <div className="text-3xl font-bold">{programs[currentSlide].stats.success}</div>
-                        <div className="text-sm text-white/80">Success Rate</div>
-                      </div>
-                    </div>
-
+                    <h2 className="text-3xl lg:text-4xl font-extrabold">{programs[currentSlide].title}</h2>
+                    <p className="text-lg lg:text-xl">{programs[currentSlide].description}</p>
                     <a
                       href="/admission#application-form"
-                      className="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      className="inline-block bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      aria-label="Enroll in our programs"
                     >
                       Enroll Now
                     </a>
                   </div>
 
-                  {/* Right Side - Features */}
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold mb-6">Program Highlights</h3>
+                    <h3 className="text-2xl text-yellow-300 font-bold mb-6">Features</h3>
                     {programs[currentSlide].features.map((feature, idx) => (
                       <div
                         key={idx}
-                        className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center space-x-4 transform transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                        className="bg-white/20 rounded-xl p-4 flex items-center space-x-4 transform transition-all duration-300 hover:bg-white/30 hover:scale-105"
                       >
-                        <div className="bg-white/20 rounded-full p-2">
-                          <Star className="w-5 h-5" />
+                        <div className="bg-white/30 rounded-full p-2">
+                          <Star className="w-5 h-5 text-yellow-200/90" />
                         </div>
                         <span className="text-lg font-medium">{feature}</span>
                       </div>
@@ -426,31 +425,27 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="mt-8 flex items-center justify-center space-x-8">
             <button
               onClick={prevSlide}
-              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
+              className="bg-white/20 hover:bg-white/30 text-white rounded-full p-3 transition-all shadow-sm"
               aria-label="Previous program"
             >
               <ChevronLeft size={24} />
             </button>
-
             <div className="flex space-x-2">
               {programs.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-yellow-400 w-8' : 'bg-white/50'
-                    }`}
+                  className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-white w-8' : 'bg-white/40'}`}
                   aria-label={`Go to program ${index + 1}`}
                 />
               ))}
             </div>
-
             <button
               onClick={nextSlide}
-              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all"
+              className="bg-white/20 hover:bg-white/30 text-white rounded-full p-3 transition-all shadow-sm"
               aria-label="Next program"
             >
               <ChevronRight size={24} />
@@ -461,9 +456,10 @@ const Home = () => {
 
       {/* All Programs Grid */}
       <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">
-            Explore All <span className="text-purple-600">Programs</span>
+        {/* Increased max-width and adjusted padding */}
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-4 xl:px-6">
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-center mb-12 text-gray-900">
+            Explore All <span className="text-violet-600">Programs</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -472,14 +468,14 @@ const Home = () => {
                 key={index}
                 onMouseEnter={() => setHoveredProgramIndex(index)}
                 onMouseLeave={() => setHoveredProgramIndex(null)}
-                className={`rounded-2xl p-6 text-center transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer ${hoveredProgramIndex === index
-                  ? 'bg-gradient-to-br from-purple-600 to-blue-600 text-white'
-                  : 'bg-gradient-to-br from-purple-50 to-blue-50 text-gray-900'
+                className={`rounded-2xl p-6 text-center transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer border border-violet-200 ${hoveredProgramIndex === index
+                  ? 'bg-gradient-to-br from-violet-200 to-indigo-200 text-gray-900'
+                  : 'bg-gradient-to-br from-violet-50 to-indigo-50 text-gray-900'
                   }`}
               >
                 <div className="flex justify-center mb-4">{program.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{program.title}</h3>
-                <p className={`text-sm ${hoveredProgramIndex === index ? 'text-white/90' : 'text-gray-600'}`}>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{program.title}</h3>
+                <p className={`text-sm ${hoveredProgramIndex === index ? 'text-gray-700' : 'text-gray-600'}`}>
                   {program.description}
                 </p>
               </div>
@@ -489,15 +485,16 @@ const Home = () => {
       </section>
 
       {/* Results Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-violet-50 to-indigo-50 overflow-hidden">
+        {/* Increased max-width and adjusted padding */}
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-4 xl:px-6">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
-              <Trophy className="w-10 h-10 text-yellow-400 mr-3 animate-pulse" />
-              <h2 className="text-3xl lg:text-5xl font-bold">Our Stellar Results</h2>
-              <Trophy className="w-10 h-10 text-yellow-400 ml-3 animate-pulse" />
+              <Trophy className="w-10 h-10 text-violet-500 mr-3 animate-pulse" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900">Our Stellar Results</h2>
+              <Trophy className="w-10 h-10 text-violet-500 ml-3 animate-pulse" />
             </div>
-            <p className="text-xl text-gray-300 mt-2">Celebrating Success Stories Across All Programs</p>
+            <p className="text-lg lg:text-xl text-gray-700 mt-2">Celebrating Success Stories Across All Programs</p>
           </div>
 
           <div
@@ -506,20 +503,17 @@ const Home = () => {
             onTouchEnd={handleTouchEnd}
             className="relative"
           >
-            {/* Category Card */}
             <div className="mb-8">
-              <div className={`bg-gradient-to-r ${currentResult.bgGradient} rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/20"></div>
+              <div className="bg-gradient-to-r from-violet-100 to-indigo-100 rounded-3xl p-8 lg:p-12 shadow-lg border border-violet-200 relative overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
                     <div className="text-center lg:text-left">
-                      <h3 className="text-3xl lg:text-4xl font-bold mb-2">{currentResult.title}</h3>
-                      <p className="text-lg lg:text-xl text-white/90">{currentResult.subtitle}</p>
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-2">{currentResult.title}</h3>
+                      <p className="text-lg lg:text-xl text-gray-700">{currentResult.subtitle}</p>
                     </div>
                     <div className="flex gap-6">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center min-w-[140px]">
-                        <div className="text-4xl font-bold">{currentResult.stats.total}</div>
-                        <div className="text-sm text-white/90 mt-1">{currentResult.stats.achievement}</div>
+                      <div className="bg-violet-50 rounded-2xl p-6 text-center min-w-[140px]">
+                        <div className="text-4xl font-bold text-gray-900 mt-1">{currentResult.stats.achievement}</div>
                       </div>
                     </div>
                   </div>
@@ -527,86 +521,106 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Students Grid */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 lg:p-8 shadow-xl">
-              <div className={`grid ${isMobile ? 'grid-cols-2 gap-3' : 'grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4'}`}>
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 lg:p-8 shadow-lg">
+              <div
+                className={`grid ${isMobile
+                    ? 'grid-cols-2 gap-4'
+                    : currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
+                      ? 'grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-10 justify-center'
+                      : 'grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6'
+                  } ${currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers' ? 'justify-items-center' : ''}`}
+              >
                 {currentResult.students.map((student, idx) => (
-                  <div key={idx} className="group relative aspect-square rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:z-10">
-                    <img
-                      src={photoMap[student.name] ?? photoMap["default.jpg"]} // Use mapped photo
-                      alt={student.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-end justify-center p-2">
-                      <p className="text-white text-sm font-semibold text-center">{student.name}</p>
+                  <div
+                    key={idx}
+                    className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.02]"
+                  >
+                    {/* Photo */}
+                    <div
+                      className={`rounded-xl overflow-hidden shadow-md border border-violet-200 ${currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
+                          ? 'w-28 h-28 sm:w-32 sm:h-32'
+                          : 'w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28'
+                        }`}
+                    >
+                      <img
+                        src={photoMap[student.name] ?? photoMap["default.jpg"]}
+                        alt={student.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     </div>
+
+                    {/* Name */}
+                    <p
+                      className={`mt-3 font-bold text-gray-900 leading-snug ${currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers'
+                          ? 'text-lg sm:text-xl'
+                          : 'text-sm'
+                        }`}
+                    >
+                      {student.name}
+                    </p>
+
+                    {/* Description */}
+                    {(currentResult.id === 'air-ranks' || currentResult.id === 'marathwada-toppers') && student.description && (
+                      <div className="flex items-center justify-center mt-1 gap-1">
+                        <Trophy
+                          className={`${currentResult.id === 'air-ranks'
+                              ? 'text-amber-500'
+                              : 'text-amber-500'
+                            } w-4 h-4 sm:w-5 sm:h-5 shrink-0`}
+                        />
+                        <span className="text-[14px] sm:text-[15px] text-violet-700 font-semibold leading-tight tracking-wide">
+                          {student.description}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
-
-
-              <div className="mt-8 text-center">
-                <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                  View All Results
-                </button>
-              </div>
             </div>
-
-            {/* Navigation Arrows */}
-            <button onClick={prevCategory} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full p-3 lg:p-4 transition-all duration-300 shadow-xl z-20">
-              <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8" />
-            </button>
-            <button onClick={nextCategory} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full p-3 lg:p-4 transition-all duration-300 shadow-xl z-20">
-              <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8" />
-            </button>
           </div>
 
-          {/* Category Indicators */}
           <div className="mt-8 lg:mt-12 flex flex-wrap justify-center gap-2 lg:gap-3">
             {resultCategories.map((category, index) => (
-              <button key={category.id} onClick={() => goToCategory(index)} className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${currentCategory === index ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white scale-110 shadow-lg' : 'bg-white/10 text-gray-300 hover:bg-white/20'}`}>
+              <button
+                key={category.id}
+                onClick={() => goToCategory(index)}
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${currentCategory === index ? 'bg-violet-600 text-white scale-110 shadow-lg' : 'bg-violet-100 text-gray-700 hover:bg-violet-200'
+                  }`}
+                aria-label={`Go to ${category.title}`}
+              >
                 {category.title.split(' ').slice(0, isMobile ? 2 : 3).join(' ')}
               </button>
             ))}
           </div>
-
-          {/* Progress Bar */}
-          <div className="mt-8 max-w-3xl mx-auto">
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 rounded-full" style={{ width: `${((currentCategory + 1) / resultCategories.length) * 100}%` }} />
-            </div>
-            <div className="flex justify-between mt-2 text-sm text-gray-400">
-              <span>Category {currentCategory + 1} of {resultCategories.length}</span>
-              <span>Auto-rotating every 6 seconds</span>
-            </div>
-          </div>
         </div>
       </section>
 
-
       {/* Visit Us Section */}
       <section className="py-12 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 lg:mb-8">VISIT US</h2>
-          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 lg:p-8 shadow-lg max-w-2xl mx-auto">
+        {/* Increased max-width and adjusted padding */}
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-4 xl:px-6 text-center">
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-6 lg:mb-8">VISIT US</h2>
+          <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl p-6 lg:p-8 shadow-lg max-w-2xl mx-auto border border-violet-200">
             <div className="flex items-center justify-center mb-4">
-              <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-purple-600 mr-3" />
+              <MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-violet-600 mr-3" />
               <h3 className="text-xl lg:text-2xl font-semibold text-gray-900">Our Location</h3>
             </div>
             <p className="text-gray-600 mb-6 text-sm lg:text-base">
               Come visit our modern facilities and meet our expert faculty
             </p>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 lg:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm lg:text-base shadow-lg">
+            <button
+              className="bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 lg:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm lg:text-base shadow-lg"
+              aria-label="Get directions to our location"
+            >
               Get Directions
             </button>
           </div>
         </div>
       </section>
 
-      {/* Replace with <Footer /> */}
-      <div className="bg-gray-900 text-white p-8 text-center">
-        <p>&copy; 2024 Jaju's Professional Academy. All rights reserved.</p>
-      </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

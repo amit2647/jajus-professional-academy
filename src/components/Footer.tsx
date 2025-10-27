@@ -33,7 +33,11 @@ function Footer() {
                         <div className="text-violet-200 text-sm space-y-3">
                             <div className="flex items-center">
                                 <Phone className="w-4 h-4 mr-2" />
-                                <span>+91 999 332 999</span>
+                                <span>
+                                    +91 9028272762
+                                    <br />
+                                    +91 9359794886
+                                </span>
                             </div>
                             <div className="flex items-center">
                                 <Mail className="w-4 h-4 mr-2" />

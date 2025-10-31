@@ -22,6 +22,7 @@ const Home = () => {
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSectionRef = useRef<HTMLDivElement | null>(null);
+  const rotationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [currentCategory, setCurrentCategory] = useState(0);
 
   // Check if device is mobile
@@ -360,19 +361,27 @@ const Home = () => {
     }, 6000);
   };
 
-  const goToCategory = (index: number) => {
-    setCurrentCategory(index);
-    resetAutoRotation();
 
-    // Wait for DOM to update, then scroll
+  const goToCategory = (index: number) => {
+    // stop current rotation
+    resetAutoRotation();
+    setCurrentCategory(index);
+
+    // restart rotation after a delay (e.g., 10s)
+    if (rotationTimeoutRef.current) clearTimeout(rotationTimeoutRef.current);
+    rotationTimeoutRef.current = setTimeout(() => {
+      resetAutoRotation();
+    }, 10000);
+
+    // scroll after layout update
     setTimeout(() => {
-      const yOffset = -100; // adjust if you have a fixed navbar
+      const yOffset = -100; // adjust for navbar height if needed
       const element = resultSectionRef.current;
       if (element) {
         const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
-    }, 150); // small delay lets the new content render before scroll
+    }, 150);
   };
 
   const currentResult = resultCategories[currentCategory];

@@ -21,7 +21,7 @@ const Home = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
+  const resultSectionRef = useRef<HTMLDivElement | null>(null);
   const [currentCategory, setCurrentCategory] = useState(0);
 
   // Check if device is mobile
@@ -363,6 +363,16 @@ const Home = () => {
   const goToCategory = (index: number) => {
     setCurrentCategory(index);
     resetAutoRotation();
+
+    // Wait for DOM to update, then scroll
+    setTimeout(() => {
+      const yOffset = -100; // adjust if you have a fixed navbar
+      const element = resultSectionRef.current;
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 150); // small delay lets the new content render before scroll
   };
 
   const currentResult = resultCategories[currentCategory];
@@ -486,7 +496,7 @@ const Home = () => {
       </section>
 
       {/* Results Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-violet-50 to-indigo-50 overflow-hidden">
+      <section ref={resultSectionRef} className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-violet-50 to-indigo-50 overflow-hidden">
         {/* Increased max-width and adjusted padding */}
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-4 xl:px-6">
           <div className="text-center mb-12">

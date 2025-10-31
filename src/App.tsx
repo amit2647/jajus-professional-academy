@@ -10,7 +10,7 @@ import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <div className="App">
-      <Router basename="/jajus-professional-academy">
+      <Router >
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />

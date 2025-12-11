@@ -3,7 +3,7 @@ import { MapPin, BookOpen, Users, Award, Target, Sparkles } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { photoMap } from "../data/photoMap";
 import Footer from '../components/Footer';
-import heroSec from "/home/amit/Projects/jajus-website/src/assets/hero_section.png";
+import heroSec from "../assets/hero_section.png";
 import { Link } from 'react-router-dom';
 
 

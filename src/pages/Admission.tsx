@@ -66,15 +66,15 @@ const AdmissionPage = () => {
             duration: "4-6 months",
             batchSize: "25-30 students",
             fee: "₹25,000",
-            features: ["Offline", "Mock Tests", "Doubt Clearing Sessions", "Progress Tracking"],
+            features: ["Offline", "Mock Tests", "Progress Tracking"],
             nextBatch: "March 15, 2025"
         },
         {
-            name: "CA Intermediate",
+            name: "CA Inter",
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
+            features: ["Offline", "Practical Training", "Exam Strategies"],
             nextBatch: "April 1, 2025"
         },
         {
@@ -82,7 +82,7 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
+            features: ["Offline", "Practical Training", "Exam Strategies"],
             nextBatch: "April 1, 2025"
         },
         {
@@ -90,7 +90,7 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "One-on-One Mentoring", "Exam Strategies"],
+            features: ["Offline", "Practical Training", "Exam Strategies"],
             nextBatch: "April 1, 2025"
         }
     ];
@@ -148,14 +148,20 @@ const AdmissionPage = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-20">
+            <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-12 sm:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-5xl font-bold mb-6">Courses</h1>
-                    <p className="text-xl text-violet-100 mb-8 max-w-3xl mx-auto">
+
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6">
+                        Courses
+                    </h1>
+
+                    <p className="text-sm sm:text-lg lg:text-xl text-violet-100 mb-4 sm:mb-8 max-w-3xl mx-auto">
                         Join thousands of successful CA professionals. Start your journey with India's most trusted CA coaching institute.
                     </p>
+
                 </div>
             </section>
+
 
             {/* Course Options */}
             <section id="courses" className="py-20 bg-white">
@@ -165,20 +171,38 @@ const AdmissionPage = () => {
                         <p className="text-xl text-gray-600">Select the program that best fits your career goals</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                         {courses.map((course, index) => (
-                            <div key={index} className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-violet-500 hover:shadow-xl transition-all duration-300">
-                                <div className="text-center mb-6">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{course.name}</h3>
+                            <div
+                                key={index}
+                                className="
+        bg-white 
+        border-2 border-gray-200 
+        rounded-2xl 
+        p-4 sm:p-6 lg:p-8   /* Smaller padding on mobile */
+        hover:border-violet-500 
+        hover:shadow-xl 
+        transition-all duration-300
+    "
+                            >
+                                <div className="text-center mb-4 sm:mb-6">
+                                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">
+                                        {course.name}
+                                    </h3>
                                 </div>
 
-                                <div className="mb-8">
-                                    <h4 className="font-semibold text-gray-900 mb-4">Course Features:</h4>
-                                    <ul className="space-y-2">
+                                <div className="mb-6 sm:mb-8">
+                                    <h4 className="font-semibold text-gray-900 mb-2 sm:mb-4 text-sm sm:text-base">
+                                        Course Features:
+                                    </h4>
+                                    <ul className="space-y-1 sm:space-y-2">
                                         {course.features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-center text-gray-600">
-                                                <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                                                <span className="text-sm">{feature}</span>
+                                            <li
+                                                key={idx}
+                                                className="flex items-center text-gray-600 text-xs sm:text-sm"
+                                            >
+                                                <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0" />
+                                                <span>{feature}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -187,39 +211,51 @@ const AdmissionPage = () => {
                                 <Link
                                     to={`/admission?course=${encodeURIComponent(course.name)}#application-form`}
                                     onClick={() => {
-                                        // delay so navigation updates formData first
                                         setTimeout(() => {
                                             const el = document.getElementById("application-form");
-                                            if (el) {
-                                                el.scrollIntoView({ behavior: "smooth" });
-                                            }
+                                            if (el) el.scrollIntoView({ behavior: "smooth" });
                                         }, 100);
                                     }}
-                                    className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                                    className="
+            w-full 
+            bg-violet-600 hover:bg-violet-700 
+            text-white 
+            font-bold 
+            py-2 sm:py-3 lg:py-3 
+            px-6 
+            rounded-lg 
+            text-sm sm:text-base 
+            transition-colors
+        "
                                 >
                                     Apply Now
                                 </Link>
-
-
                             </div>
+
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Application Form */}
-            <section id="application-form" className="py-20 bg-gray-100">
+            <section id="application-form" className="py-14 sm:py-20 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Enquire About Admission Process</h2>
-                        <p className="text-xl text-gray-600">Submit your details and our team will get back to you</p>
+
+                    <div className="text-center mb-10 sm:mb-16">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
+                            Enquire About Admission Process
+                        </h2>
+                        <p className="text-sm sm:text-xl text-gray-600">
+                            Submit your details and our team will get back to you
+                        </p>
                     </div>
 
                     <div className="max-w-2xl mx-auto">
-                        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg">
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                                 <div>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                         Full Name *
                                     </label>
                                     <input
@@ -228,13 +264,13 @@ const AdmissionPage = () => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                         placeholder="Enter your full name"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                         Email Address *
                                     </label>
                                     <input
@@ -243,13 +279,13 @@ const AdmissionPage = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                         placeholder="Enter your email"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                         Phone Number *
                                     </label>
                                     <input
@@ -258,13 +294,13 @@ const AdmissionPage = () => {
                                         value={formData.phone}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                         placeholder="Enter your phone number"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                         Course *
                                     </label>
                                     <select
@@ -272,7 +308,7 @@ const AdmissionPage = () => {
                                         value={formData.course}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                        className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                     >
                                         <option value="">Select a course</option>
                                         <option value="XI & XII Commerce">XI & XII Commerce</option>
@@ -285,15 +321,15 @@ const AdmissionPage = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-6">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                            <div className="mt-4 sm:mt-6">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                     Educational Background
                                 </label>
                                 <select
                                     name="experience"
                                     value={formData.experience}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                    className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                 >
                                     <option value="">Select your level</option>
                                     <option value="10th Pass">10th Pass</option>
@@ -303,8 +339,8 @@ const AdmissionPage = () => {
                                 </select>
                             </div>
 
-                            <div className="mt-6">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                            <div className="mt-4 sm:mt-6">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                     Message (Optional)
                                 </label>
                                 <textarea
@@ -312,56 +348,79 @@ const AdmissionPage = () => {
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     rows={4}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                    className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                                     placeholder="Any specific questions or requirements?"
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors mt-8 flex items-center justify-center"
+                                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-sm sm:text-lg transition-colors mt-6 sm:mt-8 flex items-center justify-center"
                             >
                                 Submit Application
-                                <ArrowRight className="w-5 h-5 ml-2" />
+                                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                             </button>
+
                         </form>
                     </div>
                 </div>
             </section>
 
+
             {/* Contact Information */}
-            <section className="py-20 bg-white">
+            <section className="py-14 sm:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Need Help?</h2>
-                        <p className="text-xl text-gray-600">Contact our admission team for any queries</p>
+
+                    <div className="text-center mb-10 sm:mb-16">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
+                            Need Help?
+                        </h2>
+                        <p className="text-sm sm:text-xl text-gray-600">
+                            Contact our admission team for any queries
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="text-center p-8 bg-gray-50 rounded-2xl">
-                            <Phone className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
-                            <p className="text-gray-600">+91 9028272762</p>
-                            <p className="text-gray-600">+91 9359794886</p>
-                            <p className="text-gray-600">Mon-Sat: 9 AM - 6 PM</p>
+                    <div
+                        className="
+        grid 
+        grid-cols-2 
+        sm:grid-cols-2 
+        md:grid-cols-3 
+        gap-6 sm:gap-8
+        place-items-center md:place-items-stretch
+    "
+                    >
+
+
+                        {/* Phone */}
+                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm">
+                            <Phone className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Phone</h3>
+                            <p className="text-sm sm:text-base text-gray-600">+91 9028272762</p>
+                            <p className="text-sm sm:text-base text-gray-600">+91 9359794886</p>
+                            <p className="text-xs sm:text-sm text-gray-600 mt-1">Mon-Sat: 9 AM - 6 PM</p>
                         </div>
 
-                        <div className="text-center p-8 bg-gray-50 rounded-2xl">
-                            <Mail className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
-                            <p className="text-gray-600">admissions@jajuacademy.com</p>
-                            <p className="text-gray-600">We'll respond within 24 hours</p>
+                        {/* Email */}
+                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm">
+                            <Mail className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Email</h3>
+                            <p className="text-sm sm:text-base text-gray-600">admissions@jajuacademy.com</p>
+                            <p className="text-xs sm:text-sm text-gray-600 mt-1">We'll respond within 24 hours</p>
                         </div>
 
-                        <div className="text-center p-8 bg-gray-50 rounded-2xl">
-                            <MapPin className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
-                            <p className="text-gray-600">Jaju's Professional Academy</p>
-                            <p className="text-gray-600">Schedule a campus visit</p>
+                        {/* Visit */}
+                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm">
+                            <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Visit Us</h3>
+                            <p className="text-sm sm:text-base text-gray-600">Jaju's Professional Academy</p>
+                            <p className="text-xs sm:text-sm text-gray-600 mt-1">Schedule a campus visit</p>
                         </div>
+
                     </div>
                 </div>
             </section>
+
 
             {/* Footer */}
             <Footer />

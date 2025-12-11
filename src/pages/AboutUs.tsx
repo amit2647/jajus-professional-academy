@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, Award, BookOpen, ArrowRight } from 'lucide-react';
+import { Users, Award, BookOpen } from 'lucide-react';
 import Navbar from '../components/Navbar'; // Adjust path based on your file structure
 import Footer from '../components/Footer';
 import { photoMap } from "../data/photoMap";
@@ -86,22 +86,41 @@ const AboutUs = () => {
         <div className="min-h-screen bg-gray-50">
             <Navbar />
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-20">
+            <section className="bg-gradient-to-br from-violet-600 via-violet-700 to-[#4D14C7] text-white py-12 sm:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-5xl font-bold mb-6">About Jaju's Professional Academy</h1>
-                    <p className="text-xl text-violet-100 mb-8 max-w-3xl mx-auto">
+
+                    {/* Smaller heading on mobile */}
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6">
+                        About Jaju's Professional Academy
+                    </h1>
+
+                    {/* Smaller paragraph on mobile */}
+                    <p className="text-sm sm:text-lg lg:text-xl text-violet-100 mb-4 sm:mb-8 max-w-3xl mx-auto">
                         Your trusted partner in shaping successful careers in Chartered Accountancy and commerce education.
                     </p>
+
+                    {/* Button — smaller on mobile */}
                     <div className="flex justify-center">
                         <Link
                             to="/admission?#application-form"
-                            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
+                            className="
+                    bg-yellow-400 hover:bg-yellow-500 
+                    text-gray-900 font-bold 
+                    py-2.5 sm:py-4 
+                    px-6 sm:px-8 
+                    rounded-lg 
+                    text-sm sm:text-lg 
+                    transition-all duration-300 
+                    transform hover:scale-105
+                "
                         >
                             Join Us Today
                         </Link>
                     </div>
+
                 </div>
             </section>
+
             {/* Faculty Section */}
             <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -127,12 +146,16 @@ const AboutUs = () => {
                     </div>
 
                     {/* All Other Faculty */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div className="
+    grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 
+    gap-4 sm:gap-6
+">
+
                         {teachers
                             .filter(t => t.name !== "Nikhi Jaju Sir")
                             .map((teacher, idx) => (
                                 <div key={idx} className="flex flex-col items-center">
-                                    <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg overflow-hidden shadow-md border border-violet-200">
+                                    <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg overflow-hidden shadow-md border border-violet-200">
                                         <img
                                             src={teacher.photo}
                                             alt={teacher.name}
@@ -140,10 +163,12 @@ const AboutUs = () => {
                                             loading="lazy"
                                         />
                                     </div>
-                                    <p className="mt-2 text-center text-sm font-medium text-gray-800">
+
+                                    <p className="mt-2 text-center text-xs sm:text-sm font-medium text-gray-800 leading-tight">
                                         {teacher.name}
                                     </p>
                                 </div>
+
                             ))}
                     </div>
                 </div>
@@ -152,44 +177,58 @@ const AboutUs = () => {
 
 
             {/* Mission Section */}
-            <section className="py-20 bg-white">
+            <section className="py-12 sm:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Mission</h2>
-                        <p className="text-xl text-gray-600">Empowering students to achieve excellence in CA and commerce education</p>
+
+                    <div className="text-center mb-10 sm:mb-16">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
+                            Our Mission
+                        </h2>
+                        <p className="text-sm sm:text-xl text-gray-600">
+                            Empowering students to achieve excellence in CA and commerce education
+                        </p>
                     </div>
-                    <div className="bg-gray-50 rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
-                        <p className="text-gray-600 leading-relaxed">
+
+                    <div className="bg-gray-50 rounded-2xl p-4 sm:p-8 shadow-lg max-w-3xl mx-auto">
+                        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                             At Jaju's Professional Academy, our mission is to provide world-class education and mentorship to aspiring Chartered Accountants and commerce students. We aim to foster a learning environment that combines rigorous academics with practical insights, ensuring our students are well-prepared for their exams and future careers.
                         </p>
                     </div>
                 </div>
             </section>
 
+
             {/* Faculty Section */}
             <section className="py-20 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Expert Faculty</h2>
-                        <p className="text-xl text-gray-600">Learn from the best in the industry</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+
+                        <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-lg text-center">
+                            <Users className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">CA Professionals</h3>
+                            <p className="text-xs sm:text-base text-gray-600">
+                                Our faculty includes practicing CAs...
+                            </p>
+                        </div>
+
+                        <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-lg text-center">
+                            <BookOpen className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Academic Experts</h3>
+                            <p className="text-xs sm:text-base text-gray-600">
+                                Educators with deep knowledge...
+                            </p>
+                        </div>
+
+                        <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-lg text-center">
+                            <Award className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Mentors & Guides</h3>
+                            <p className="text-xs sm:text-base text-gray-600">
+                                Personalized mentoring to guide...
+                            </p>
+                        </div>
+
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-                            <Users className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">CA Professionals</h3>
-                            <p className="text-gray-600">Our faculty includes practicing CAs with years of industry experience.</p>
-                        </div>
-                        <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-                            <BookOpen className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Academic Experts</h3>
-                            <p className="text-gray-600">Educators with deep knowledge in accounting, taxation, and commerce.</p>
-                        </div>
-                        <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-                            <Award className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Mentors & Guides</h3>
-                            <p className="text-gray-600">Personalized mentoring to guide students through their CA journey.</p>
-                        </div>
-                    </div>
+
                 </div>
             </section>
 
@@ -222,23 +261,27 @@ const AboutUs = () => {
 
             {/* Footer */}
 
-            {/* Contact Form */}
-            <section className="py-20 bg-gray-100">
+            <section className="py-12 sm:py-20 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
-                        <p className="text-xl text-gray-600">
+
+                    <div className="text-center mb-10 sm:mb-16">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
+                            Send Us a Message
+                        </h2>
+                        <p className="text-sm sm:text-xl text-gray-600">
                             Fill out the form below, and our team will get back to you
                         </p>
                     </div>
+
                     <div className="max-w-2xl mx-auto">
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-white rounded-2xl p-8 shadow-lg space-y-6"
+                            className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg space-y-4 sm:space-y-6"
                         >
-                            {/* Full Name */}
+
+                            {/* Name */}
                             <div>
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                     Full Name *
                                 </label>
                                 <input
@@ -247,14 +290,14 @@ const AboutUs = () => {
                                     value={formData.name}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
+                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
                                     placeholder="Enter your full name"
                                 />
                             </div>
 
                             {/* Email */}
                             <div>
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                     Email Address *
                                 </label>
                                 <input
@@ -263,14 +306,14 @@ const AboutUs = () => {
                                     value={formData.email}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
+                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
                                     placeholder="Enter your email"
                                 />
                             </div>
 
                             {/* Phone */}
                             <div>
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                     Phone Number *
                                 </label>
                                 <input
@@ -279,39 +322,40 @@ const AboutUs = () => {
                                     value={formData.phone}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
+                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
                                     placeholder="Enter your phone number"
                                 />
                             </div>
 
                             {/* Message */}
                             <div>
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
                                     Message *
                                 </label>
                                 <textarea
                                     name="message"
                                     value={formData.message}
                                     onChange={handleInputChange}
+                                    rows={4}
                                     required
-                                    rows={5}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent resize-none"
+                                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] resize-none"
                                     placeholder="Your message or query"
                                 ></textarea>
                             </div>
 
-                            {/* Submit */}
+                            {/* Submit Button */}
                             <button
                                 type="submit"
-                                className="w-full bg-[#5917E8] hover:bg-[#4D14C7] text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors flex items-center justify-center"
+                                className="w-full bg-[#5917E8] hover:bg-[#4D14C7] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-sm sm:text-lg transition-colors"
                             >
                                 Send Message
-                                <ArrowRight className="w-5 h-5 ml-2" />
                             </button>
+
                         </form>
                     </div>
                 </div>
             </section>
+
 
             <Footer />
         </div>

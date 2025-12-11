@@ -44,9 +44,9 @@ function Navbar() {
                             <Link to="/about" className={getLinkClass('/about')}>
                                 ABOUT US
                             </Link>
-                            <Link to="/contact" className={getLinkClass('/contact')}>
+                            {/* <Link to="/contact" className={getLinkClass('/contact')}>
                                 CONTACT
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                 </div>

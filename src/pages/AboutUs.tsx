@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Users, Award, BookOpen } from 'lucide-react';
+import { Users, Award, BookOpen, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar'; // Adjust path based on your file structure
 import Footer from '../components/Footer';
 import { photoMap } from "../data/photoMap";
+import { useState } from 'react';
 
 const teachers = [
     { name: "Nikhi Jaju Sir", photo: photoMap["Nikhi "], title: "Head of Classes & Academic Director" },
@@ -26,7 +27,61 @@ const teachers = [
 ];
 
 
+
 const AboutUs = () => {
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(
+                "https://script.google.com/macros/s/AKfycbziyWu0qhhCgEfc3WhRgXXtk34ck4pr72yCRQkU-9a5tQILVHHzdk4ZIHlz6oAeu5TY0A/exec",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(formData),
+                    redirect: "follow"
+                }
+            );
+
+            const result = await response.json();
+            console.log("Response:", result);
+
+            if (result.status === "success") {
+                alert("Message sent successfully!");
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    message: ""
+                });
+            } else {
+                alert(`Submission failed: ${result.message || "Unknown error"}`);
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Submission failed. Please try again.");
+        }
+    };
     return (
         <div className="min-h-screen bg-gray-50">
             <Navbar />
@@ -166,6 +221,98 @@ const AboutUs = () => {
             </section> */}
 
             {/* Footer */}
+
+            {/* Contact Form */}
+            <section className="py-20 bg-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
+                        <p className="text-xl text-gray-600">
+                            Fill out the form below, and our team will get back to you
+                        </p>
+                    </div>
+                    <div className="max-w-2xl mx-auto">
+                        <form
+                            onSubmit={handleSubmit}
+                            className="bg-white rounded-2xl p-8 shadow-lg space-y-6"
+                        >
+                            {/* Full Name */}
+                            <div>
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    Full Name *
+                                </label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
+                                    placeholder="Enter your full name"
+                                />
+                            </div>
+
+                            {/* Email */}
+                            <div>
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    Email Address *
+                                </label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
+                                    placeholder="Enter your email"
+                                />
+                            </div>
+
+                            {/* Phone */}
+                            <div>
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    Phone Number *
+                                </label>
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full h-[52px] px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent"
+                                    placeholder="Enter your phone number"
+                                />
+                            </div>
+
+                            {/* Message */}
+                            <div>
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                    Message *
+                                </label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    required
+                                    rows={5}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] focus:border-transparent resize-none"
+                                    placeholder="Your message or query"
+                                ></textarea>
+                            </div>
+
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                className="w-full bg-[#5917E8] hover:bg-[#4D14C7] text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors flex items-center justify-center"
+                            >
+                                Send Message
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
             <Footer />
         </div>
     );

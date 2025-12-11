@@ -5,6 +5,7 @@ import { photoMap } from "../data/photoMap";
 import Footer from '../components/Footer';
 import heroSec from "../assets/hero_section.png";
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 
 const Home = () => {
@@ -95,17 +96,47 @@ const Home = () => {
                 to="/admission#courses"
                 onMouseEnter={() => setHoveredProgramIndex(index)}
                 onMouseLeave={() => setHoveredProgramIndex(null)}
-                className={`rounded-2xl p-6 text-center transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer border border-violet-200 ${hoveredProgramIndex === index
-                  ? 'bg-gradient-to-br from-violet-200 to-indigo-200 text-gray-900'
-                  : 'bg-gradient-to-br from-violet-50 to-indigo-50 text-gray-900'
-                  }`}
+                className={`
+    rounded-2xl 
+    p-3 sm:p-4 lg:p-6     
+    text-center 
+    transition-all duration-300 
+    transform hover:scale-105 
+    shadow-lg 
+    cursor-pointer 
+    border border-violet-200
+    ${hoveredProgramIndex === index
+                    ? "bg-gradient-to-br from-violet-200 to-indigo-200 text-gray-900"
+                    : "bg-gradient-to-br from-violet-50 to-indigo-50 text-gray-900"
+                  }
+  `}
               >
-                <div className="flex justify-center mb-4">{program.icon}</div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{program.title}</h3>
-                <p className={`text-sm ${hoveredProgramIndex === index ? 'text-gray-700' : 'text-gray-600'}`}>
+                {/* Smaller icon */}
+                <div className="flex justify-center mb-2 sm:mb-3">
+                  <div className="text-violet-700">
+                    {/** Force icon size smaller on mobile */}
+                    {React.cloneElement(program.icon, {
+                      className:
+                        "w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-violet-700"
+                    })}
+                  </div>
+                </div>
+
+                {/* Smaller title */}
+                <h3 className="text-sm sm:text-base lg:text-xl font-bold mb-1 sm:mb-2 text-gray-900">
+                  {program.title}
+                </h3>
+
+                {/* Smaller description */}
+                <p
+                  className={`text-xs sm:text-sm lg:text-base ${hoveredProgramIndex === index ? "text-gray-700" : "text-gray-600"
+                    }`}
+                >
                   {program.description}
                 </p>
               </Link>
+
+
             ))}
           </div>
         </div>

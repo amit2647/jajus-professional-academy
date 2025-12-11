@@ -64,9 +64,9 @@ function Navbar() {
                             <Link to="/about" className={getLinkClass('/about')} onClick={() => setIsOpen(false)}>
                                 ABOUT US
                             </Link>
-                            <Link to="/contact" className={getLinkClass('/contact')} onClick={() => setIsOpen(false)}>
+                            {/* <Link to="/contact" className={getLinkClass('/contact')} onClick={() => setIsOpen(false)}>
                                 CONTACT
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                 )}

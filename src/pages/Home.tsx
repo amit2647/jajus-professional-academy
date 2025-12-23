@@ -232,10 +232,10 @@ const Home = () => {
 
                     {/* Content */}
                     <div className="p-4 relative">
-                      <h4 className="text-white font-bold text-blue-800/80 mb-1 group-hover:text-violet-600 transition duration-300">
+                      <h4 className="text-blue-800/80 font-bold mb-1 group-hover:text-violet-600 transition duration-300">
                         {teacher.name}
                       </h4>
-                      <p className="text-gray-400 text-xs leading-relaxed">
+                      <p className="text-gray-600 text-xs leading-relaxed">
                         {teacher.title}
                       </p>
 

@@ -6,25 +6,78 @@ import { photoMap } from "../data/photoMap";
 import { useState } from 'react';
 
 const teachers = [
-    { name: "Nikhi Jaju Sir", photo: photoMap["Nikhi "], title: "Head of Classes & Academic Director" },
-    { name: "Pooja Jaju ", photo: photoMap["Pooja Jaju"], title: "Faculty - Business Studies" },
-    { name: "Sunil Sharma ", photo: photoMap["Sunil Sharma Sir"], title: "Faculty - Accounting" },
-    { name: "Swapnil Mundada", photo: photoMap["Swapnil Sir"], title: "Faculty - Taxation" },
-    { name: "Sagar Mantri ", photo: photoMap["Sagar Mantri Sir"], title: "Faculty - Cost & Management" },
-    { name: "Anuj Totla ", photo: photoMap["Anuj Totla Sir"], title: "Faculty - Economics & Law" },
-    { name: "Ganesh Agharde ", photo: photoMap["Ganesh Agharde Sir"], title: "Faculty - Statistics & FM" },
-    { name: "Anand Dargad ", photo: photoMap["Anand Dargad Sir"], title: "Faculty - Business Studies" },
-    { name: "Shailesh Dahad ", photo: photoMap["Shailes Dhad Sir"], title: "Faculty - Audit & Assurance" },
-    { name: "B B Ghuge ", photo: photoMap["B B Ghuge sir"], title: "Faculty - Accounting" },
-    { name: "Krushna Kabra ", photo: photoMap["Krishna Kabra"], title: "Faculty - Taxation" },
-    { name: "Darshan Patni ", photo: photoMap["Daran Pat"], title: "Faculty - Cost & Management" },
-    { name: "Komal Rathi ", photo: photoMap["Komal Rathi Madam"], title: "Faculty - Business Law" },
-    { name: "Payal Sarda ", photo: photoMap["Payal Sarda Madam"], title: "Faculty - Economics" },
-    { name: "Kajal Mundada", photo: photoMap["Kajal Madam"], title: "Faculty - Mathematics" },
-    { name: "Shrikant Mundada", photo: photoMap["Shrikant Mundada"], title: "Faculty - Strategic Management" },
-    { name: "Ravi Lohiya", photo: photoMap["Ravi Lohiya"], title: "Faculty - Information Technology" },
-    { name: "Gauri Mundada", photo: photoMap["Gauri Mundada"], title: "Faculty - Communication Skills" },
+    {
+        name: "Nikhi Jaju Sir",
+        photo: photoMap["Nikhi Jaju"],
+        title: "Head of Classes & Academic Director",
+    },
+    {
+        name: "Pooja Jaju",
+        photo: photoMap["Pooja Jaju"],
+        title: "Faculty - Business Studies",
+    },
+    {
+        name: "Sunil Sharma",
+        photo: photoMap["Sunil Sharma"],
+        title: "Faculty - Accounting",
+    },
+    {
+        name: "Swapnil Mundada",
+        photo: photoMap["Swapnil Mundada"],
+        title: "Faculty - Taxation",
+    },
+    {
+        name: "Sagar Mantri",
+        photo: photoMap["Sagar Mantri"],
+        title: "Faculty - Cost & Management",
+    },
+    {
+        name: "Anuj Totla",
+        photo: photoMap["Anuj Totla"],
+        title: "Faculty - Economics & Law",
+    },
+    {
+        name: "Ganesh Agharde",
+        photo: photoMap["Ganesh Agharde"],
+        title: "Faculty - Statistics & FM",
+    },
+    {
+        name: "Anand Dargad",
+        photo: photoMap["Anand Dargad"],
+        title: "Faculty - Business Studies",
+    },
+    {
+        name: "B B Ghuge",
+        photo: photoMap["B B Ghuge"],
+        title: "Faculty - Accounting",
+    },
+    {
+        name: "Krushna Kabra",
+        photo: photoMap["Krishna Kabra"],
+        title: "Faculty - Taxation",
+    },
+    {
+        name: "Darshan Patni",
+        photo: photoMap["Darshan Patni"],
+        title: "Faculty - Cost & Management",
+    },
+    {
+        name: "Kajal Mundada",
+        photo: photoMap["Kajal Madam"],
+        title: "Faculty - Mathematics",
+    },
+    {
+        name: "Shrikant Mundada",
+        photo: photoMap["Shrikant Mundada"],
+        title: "Faculty - Strategic Management",
+    },
+    {
+        name: "Ravi Lohiya",
+        photo: photoMap["Ravi Lohiya"],
+        title: "Faculty - Information Technology",
+    },
 ];
+
 
 
 
@@ -90,8 +143,8 @@ const AboutUs = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
                     {/* Smaller heading on mobile */}
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6">
-                        About Jaju's Professional Academy
+                    <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 font-semibold">
+                        Jaju's Professional Academy
                     </h1>
 
                     {/* Smaller paragraph on mobile */}
@@ -110,7 +163,7 @@ const AboutUs = () => {
                     px-6 sm:px-8 
                     rounded-lg 
                     text-sm sm:text-lg 
-                    transition-all duration-300 
+                    transition-all duration-500 
                     transform hover:scale-105
                 "
                         >
@@ -121,60 +174,131 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {/* Faculty Section */}
-            <section className="py-16 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Faculty</h2>
-                        <p className="text-lg text-gray-600">Meet the pillars of JPA’s excellence</p>
-                    </div>
+            {/* ================= Faculty Section (Landing Page) ================= */}
+            <section className="relative py-20 overflow-hidden">
 
-                    {/* Head of Classes */}
-                    <div className="mb-16 flex flex-col items-center">
-                        <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-violet-400">
-                            <img
-                                src={photoMap["Nikhi Sir"]}
-                                alt="Nikhil Sir"
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                            />
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Section Header */}
+                    <div className="text-center mb-16">
+                        <div className="inline-block mb-4 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                            <span className="text-sm font-semibold text-purple-500 tracking-wider uppercase">World-Class Education</span>
                         </div>
-                        <h3 className="mt-4 text-2xl font-bold text-gray-900">Nikhil Jaju</h3>
-                        <p className="text-gray-600 text-sm sm:text-base mt-1">
-                            Head of Classes & Academic Director
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800/80 tracking-tight mb-4">
+                            Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">Mentors</span>
+                        </h2>
+                        <p className="mt-4 text-lg text-purple-500 max-w-2xl mx-auto">
+                            Expert educators committed to unlocking your full potential
                         </p>
                     </div>
 
-                    {/* All Other Faculty */}
-                    <div className="
-    grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 
-    gap-4 sm:gap-6
-">
+                    {/* ================= Head of Classes - Featured Card ================= */}
+                    <div className="mb-20 flex justify-center">
+                        <div className="relative group">
+                            {/* Card */}
+                            <div className="relative bg-gradient-to-br from-white via-purple-50 to-indigo-50 rounded-3xl shadow-2xl p-10 flex flex-col items-center max-w-md w-full border border-white/50">
 
-                        {teachers
-                            .filter(t => t.name !== "Nikhi Jaju Sir")
-                            .map((teacher, idx) => (
-                                <div key={idx} className="flex flex-col items-center">
-                                    <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg overflow-hidden shadow-md border border-violet-200">
+                                {/* Badge */}
+                                <div className="absolute -top-4 px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold rounded-full shadow-lg">
+                                    ⭐ Head of Classes
+                                </div>
+
+                                {/* Portrait Image with Frame */}
+                                <div className="relative">
+                                    <div className="absolute -inset-2 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-3xl blur opacity-50"></div>
+                                    <div className="relative w-56 h-72 sm:w-64 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform group-hover:scale-105 transition duration-500">
                                         <img
-                                            src={teacher.photo}
-                                            alt={teacher.name}
-                                            className="w-full h-full object-cover"
+                                            src={photoMap["Nikhi Jaju"]}
+                                            alt="Nikhil Jaju"
+                                            className="w-full h-full object-cover object-top"
                                             loading="lazy"
                                         />
                                     </div>
-
-                                    <p className="mt-2 text-center text-xs sm:text-sm font-medium text-gray-800 leading-tight">
-                                        {teacher.name}
-                                    </p>
                                 </div>
 
+                                {/* Text */}
+                                <h3 className="mt-8 text-3xl font-bold bg-gradient-to-r from-purple-900 to-indigo-900 bg-clip-text text-transparent">
+                                    Nikhil Jaju
+                                </h3>
+                                <p className="mt-2 text-sm text-purple-700 font-semibold text-center">
+                                    Academic Director & Head of Classes
+                                </p>
+
+                                {/* Decorative Line */}
+                                <div className="mt-4 w-16 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ================= Faculty Grid with Cards ================= */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+                        {teachers
+                            .filter(t => t.name !== "Nikhi Jaju Sir")
+                            .slice(0, 12)
+                            .map((teacher, idx) => (
+                                <div
+                                    key={idx}
+                                    className="group relative"
+                                >
+                                    {/* Card Background Glow */}
+                                    <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+
+                                    {/* Card */}
+                                    <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-white/50 transform group-hover:-translate-y-2 transition-all duration-500">
+
+                                        {/* Portrait Image */}
+                                        <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md border-2 border-purple-500 group-hover:border-purple-400 transition-all duration-500">
+                                            <img
+                                                src={teacher.photo}
+                                                alt={teacher.name}
+                                                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                                                loading="lazy"
+                                            />
+                                        </div>
+
+                                        {/* Name */}
+                                        <p className="mt-3 text-sm font-bold text-gray-900 leading-tight text-center">
+                                            {teacher.name}
+                                        </p>
+
+                                        {/* Title with Slide-up Effect */}
+                                        <div className="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500">
+                                            <p className="text-xs text-purple-700 font-medium mt-1 text-center pt-1 border-t border-purple-500">
+                                                {teacher.title}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             ))}
                     </div>
+
+                    {/* View All Button with Animation
+                    <div className="mt-16 text-center">
+                        <button className="group relative inline-flex items-center gap-3 px-10 py-4 overflow-hidden rounded-full bg-white text-purple-900 font-bold shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
+                            <span className="relative z-10">View All Faculty</span>
+                            <svg className="relative z-10 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                            <span className="absolute inset-0 flex items-center justify-center gap-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span>View All Faculty</span>
+                                <svg className="w-5 h-5 transform translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div> */}
+
+                </div>
+
+                {/* Bottom Decorative Wave */}
+                <div className="absolute bottom-0 left-0 right-0">
+                    <svg className="w-full h-16 fill-current text-white" viewBox="0 0 1500 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                    </svg>
                 </div>
             </section>
-
-
+            {/* ================= End Faculty Section ================= */}
 
             {/* Mission Section */}
             <section className="py-12 sm:py-20 bg-white">
@@ -252,7 +376,7 @@ const AboutUs = () => {
                         </div>
                         <div className="bg-gray-50 rounded-2xl p-8 shadow-lg text-center">
                             <Award className="w-12 h-12 text-violet-600 mx-auto mb-4" />
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted Since 2000</h3>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted Since 5000</h3>
                             <p className="text-gray-600">Over two decades of excellence in CA education.</p>
                         </div>
                     </div>
@@ -290,7 +414,7 @@ const AboutUs = () => {
                                     value={formData.name}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
+                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-500 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
                                     placeholder="Enter your full name"
                                 />
                             </div>
@@ -306,7 +430,7 @@ const AboutUs = () => {
                                     value={formData.email}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
+                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-500 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
                                     placeholder="Enter your email"
                                 />
                             </div>
@@ -322,7 +446,7 @@ const AboutUs = () => {
                                     value={formData.phone}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
+                                    className="w-full h-[44px] sm:h-[52px] px-3 sm:px-4 border border-gray-500 rounded-lg focus:ring-2 focus:ring-[#5917E8]"
                                     placeholder="Enter your phone number"
                                 />
                             </div>
@@ -338,7 +462,7 @@ const AboutUs = () => {
                                     onChange={handleInputChange}
                                     rows={4}
                                     required
-                                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5917E8] resize-none"
+                                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-500 rounded-lg focus:ring-2 focus:ring-[#5917E8] resize-none"
                                     placeholder="Your message or query"
                                 ></textarea>
                             </div>

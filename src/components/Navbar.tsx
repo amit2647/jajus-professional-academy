@@ -44,9 +44,9 @@ function Navbar() {
                             <Link to="/about" className={getLinkClass('/about')}>
                                 ABOUT US
                             </Link>
-                            {/* <Link to="/contact" className={getLinkClass('/contact')}>
-                                CONTACT
-                            </Link> */}
+                            <Link to="/gallery" className={getLinkClass('/gallery')}>
+                                GALLERY
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -64,9 +64,9 @@ function Navbar() {
                             <Link to="/about" className={getLinkClass('/about')} onClick={() => setIsOpen(false)}>
                                 ABOUT US
                             </Link>
-                            {/* <Link to="/contact" className={getLinkClass('/contact')} onClick={() => setIsOpen(false)}>
-                                CONTACT
-                            </Link> */}
+                            <Link to="/gallery" className={getLinkClass('/gallery')} onClick={() => setIsOpen(false)}>
+                                GALLERY
+                            </Link>
                         </div>
                     </div>
                 )}

@@ -1,12 +1,84 @@
 import { useState } from 'react';
 import { MapPin, BookOpen, Users, Award, Target, Sparkles } from 'lucide-react';
 import Navbar from '../components/Navbar';
-import { photoMap } from "../data/photoMap";
 import Footer from '../components/Footer';
 import heroSec from "../assets/hero_section.png";
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { photoMap } from '../data/photoMap';
 
+const teachers = [
+  {
+    name: "Nikhi Jaju Sir",
+    photo: photoMap["Nikhi Jaju"],
+    title: "Head of Classes & Academic Director",
+  },
+  {
+    name: "Pooja Jaju",
+    photo: photoMap["Pooja Jaju"],
+    title: "Faculty - Business Studies",
+  },
+  {
+    name: "Sunil Sharma",
+    photo: photoMap["Sunil Sharma"],
+    title: "Faculty - Accounting",
+  },
+  {
+    name: "Swapnil Mundada",
+    photo: photoMap["Swapnil Mundada"],
+    title: "Faculty - Taxation",
+  },
+  {
+    name: "Sagar Mantri",
+    photo: photoMap["Sagar Mantri"],
+    title: "Faculty - Cost & Management",
+  },
+  {
+    name: "Anuj Totla",
+    photo: photoMap["Anuj Totla"],
+    title: "Faculty - Economics & Law",
+  },
+  {
+    name: "Ganesh Agharde",
+    photo: photoMap["Ganesh Agharde"],
+    title: "Faculty - Statistics & FM",
+  },
+  {
+    name: "Anand Dargad",
+    photo: photoMap["Anand Dargad"],
+    title: "Faculty - Business Studies",
+  },
+  {
+    name: "B B Ghuge",
+    photo: photoMap["B B Ghuge"],
+    title: "Faculty - Accounting",
+  },
+  {
+    name: "Krushna Kabra",
+    photo: photoMap["Krishna Kabra"],
+    title: "Faculty - Taxation",
+  },
+  {
+    name: "Darshan Patni",
+    photo: photoMap["Darshan Patni"],
+    title: "Faculty - Cost & Management",
+  },
+  {
+    name: "Kajal Mundada",
+    photo: photoMap["Kajal Madam"],
+    title: "Faculty - Mathematics",
+  },
+  {
+    name: "Shrikant Mundada",
+    photo: photoMap["Shrikant Mundada"],
+    title: "Faculty - Strategic Management",
+  },
+  {
+    name: "Ravi Lohiya",
+    photo: photoMap["Ravi Lohiya"],
+    title: "Faculty - Information Technology",
+  },
+];
 
 const Home = () => {
 
@@ -58,14 +130,6 @@ const Home = () => {
     }
   ];
 
-  const photoFiles = import.meta.glob('../assets/photos/*.{jpg,jpeg,png}', { eager: true, import: 'default' });
-
-  // Match student names to filenames
-  Object.entries(photoFiles).forEach(([path, module]) => {
-    const fileName = path.split('/').pop() as string;
-    photoMap[fileName] = module as string;
-  });
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100" >
@@ -78,6 +142,122 @@ const Home = () => {
           className="w-full h-full object-cover"
         />
       </section>
+
+      {/* ================= Faculty Section (Landing Page) ================= */}
+      <section className="py-16 relative overflow-hidden">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="">
+              <span className="text-blue-800/80 text-sm font-semibold">World-Class Education</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-800/80 tracking-tight mb-4">
+              Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">Expert Faculty</span>
+            </h2>
+            <p className="text-lg text-blue-800/80 max-w-2xl mx-auto">
+              Learn from passionate educators who inspire excellence
+            </p>
+          </div>
+
+          {/* ================= Head of Classes - Featured Card ================= */}
+          <div className="mb-20 flex justify-center">
+            <div className="relative group">
+              <div className="relative rounded-3xl shadow-2xl p-10 flex flex-col md:flex-row items-center gap-8 max-w-3xl border border-violet-500/30">
+
+                {/* Badge */}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-sm font-bold rounded-full shadow-lg">
+                  ⭐ Head of Classes
+                </div>
+
+                {/* Portrait Image with Hexagon Shape */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden shadow-2xl border-4 border-violet-500 ring-4 ring-violet-500/30">
+                    <img
+                      src={photoMap["Nikhi Jaju"]}
+                      alt="Nikhil Jaju"
+                      className="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                {/* Text Content */}
+                <div className="text-center md:text-left">
+                  <h3 className="text-3xl font-bold text-blue-800/80 mb-2">
+                    Nikhil Jaju
+                  </h3>
+                  <p className="text-violet-500 font-semibold mb-4">
+                    Academic Director & Head of Classes
+                  </p>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Leading JPA's academic vision with years of expertise in shaping young minds and fostering excellence in education.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ================= Faculty Grid - Staggered Layout ================= */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {teachers
+              .filter(t => t.name !== "Nikhi Jaju Sir")
+              .slice(0, 12)
+              .map((teacher, idx) => (
+                <div
+                  key={idx}
+                  className="group relative"
+                  style={{ animationDelay: `${idx * 50}ms` }}
+                >
+                  {/* Card with Tilt Effect */}
+                  <div className="relative backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-violet-500/20 hover:border-violet-500/50 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl hover:shadow-violet-500/20">
+
+                    {/* Image with Overlay */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={teacher.photo}
+                        alt={teacher.name}
+                        className="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-500"
+                        loading="lazy"
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-20 group-hover:opacity-10 transition duration-300"></div>
+
+                      {/* Floating Badge */}
+                      <div className="absolute top-3 right-3 w-8 h-8 bg-violet-600 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <span className="text-white text-xs">✦</span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-4 relative">
+                      <h4 className="text-white font-bold text-blue-800/80 mb-1 group-hover:text-violet-600 transition duration-300">
+                        {teacher.name}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed">
+                        {teacher.title}
+                      </p>
+
+                      {/* Decorative Line */}
+                      {/* <div className="mt-3 h-1 w-0 group-hover:w-full bg-gradient-to-r from-violet-500 to-indigo-500 transition-all duration-500 rounded-full"></div> */}
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+
+          {/* View All Button */}
+          {/* <div className="mt-16 text-center">
+            <button className="relative group px-10 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold rounded-full shadow-xl hover:shadow-2xl hover:shadow-violet-500/50 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <span className="relative z-10">View All Faculty →</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+            </button>
+          </div> */}
+
+        </div>
+      </section>
+      {/* ================= End Faculty Section ================= */}
 
 
 

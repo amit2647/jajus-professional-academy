@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Admission from './pages/Admission'; // Adjust path if Admission is in a different folder
 import Programs from './pages/Programs';
 import AboutUs from './pages/AboutUs';
-import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/admission" element={<Admission />} />
           <Route path="/programs" element={<Programs />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </Router>
     </div>

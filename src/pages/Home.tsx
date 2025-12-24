@@ -149,14 +149,19 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="">
-              <span className="text-blue-800/80 text-sm font-semibold">World-Class Education</span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-800/80 tracking-tight mb-4">
-              Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">Expert Faculty</span>
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="text-blue-800/80 text-xs sm:text-sm font-semibold">
+              World-Class Education
+            </span>
+
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-blue-800/80 tracking-tight mt-2 mb-2 sm:mb-4">
+              Meet Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">
+                Expert Faculty
+              </span>
             </h2>
-            <p className="text-lg text-blue-800/80 max-w-2xl mx-auto">
+
+            <p className="text-sm sm:text-lg text-blue-800/80 max-w-2xl mx-auto">
               Learn from passionate educators who inspire excellence
             </p>
           </div>
@@ -164,7 +169,10 @@ const Home = () => {
           {/* ================= Head of Classes - Featured Card ================= */}
           <div className="mb-20 flex justify-center">
             <div className="relative group">
-              <div className="relative rounded-3xl shadow-2xl p-10 flex flex-col md:flex-row items-center gap-8 max-w-3xl border border-violet-500/30">
+              <div className="relative rounded-2xl sm:rounded-3xl shadow-2xl 
+                p-4 sm:p-8 
+                flex flex-col md:flex-row items-center gap-4 sm:gap-8 
+                max-w-3xl border border-violet-500/30">
 
                 {/* Badge */}
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-sm font-bold rounded-full shadow-lg">
@@ -173,7 +181,10 @@ const Home = () => {
 
                 {/* Portrait Image with Hexagon Shape */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden shadow-2xl border-4 border-violet-500 ring-4 ring-violet-500/30">
+                  <div className="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 
+                    rounded-full overflow-hidden shadow-xl 
+                    border-4 border-violet-500 ring-2 sm:ring-4 ring-violet-500/30">
+
                     <img
                       src={photoMap["Nikhi Jaju"]}
                       alt="Nikhil Jaju"
@@ -185,13 +196,13 @@ const Home = () => {
 
                 {/* Text Content */}
                 <div className="text-center md:text-left">
-                  <h3 className="text-3xl font-bold text-blue-800/80 mb-2">
+                  <h3 className="text-xl sm:text-3xl font-bold text-blue-800/80 mb-1 sm:mb-2">
                     Nikhil Jaju
                   </h3>
                   <p className="text-violet-500 font-semibold mb-4">
                     Academic Director & Head of Classes
                   </p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                     Leading JPA's academic vision with years of expertise in shaping young minds and fostering excellence in education.
                   </p>
                 </div>
@@ -200,52 +211,56 @@ const Home = () => {
           </div>
 
           {/* ================= Faculty Grid - Staggered Layout ================= */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12 sm:gap-6">
             {teachers
               .filter(t => t.name !== "Nikhi Jaju Sir")
               .slice(0, 12)
               .map((teacher, idx) => (
-                <div
-                  key={idx}
-                  className="group relative"
-                  style={{ animationDelay: `${idx * 50}ms` }}
-                >
-                  {/* Card with Tilt Effect */}
-                  <div className="relative backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-violet-500/20 hover:border-violet-500/50 transition-all duration-300 transform hover:-translate-y-3 hover:shadow-2xl hover:shadow-violet-500/20">
-
-                    {/* Image with Overlay */}
-                    <div className="relative h-64 overflow-hidden">
+                <div key={idx} className="group relative">
+                  <div
+                    className="
+            relative rounded-lg sm:rounded-2xl
+            overflow-hidden
+            border border-violet-500/15
+            shadow-sm sm:shadow-xl
+            transition-all duration-300
+            sm:hover:-translate-y-3 sm:hover:shadow-2xl sm:hover:shadow-violet-500/20
+          "
+                  >
+                    {/* Portrait Image */}
+                    <div className="relative h-36 sm:h-36 md:h-44 lg:h-60 overflow-hidden">
                       <img
                         src={teacher.photo}
                         alt={teacher.name}
-                        className="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-500"
+                        className="
+                w-full h-full
+                object-cover object-top
+                sm:group-hover:scale-110
+                transition duration-500
+              "
                         loading="lazy"
                       />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-20 group-hover:opacity-10 transition duration-300"></div>
 
-                      {/* Floating Badge */}
-                      <div className="absolute top-3 right-3 w-8 h-8 bg-violet-600 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                        <span className="text-white text-xs">✦</span>
-                      </div>
+                      {/* Very light overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-10 sm:opacity-20"></div>
                     </div>
 
-                    {/* Content */}
-                    <div className="p-4 relative">
-                      <h4 className="text-blue-800/80 font-bold mb-1 group-hover:text-violet-600 transition duration-300">
+                    {/* Text Content */}
+                    <div className="px-1.5 py-1.5 sm:p-4 text-center">
+                      <h4 className="text-[11px] sm:text-base font-semibold text-blue-800/80 leading-tight truncate">
                         {teacher.name}
                       </h4>
-                      <p className="text-gray-600 text-xs leading-relaxed">
+                      <p className="text-[8px] sm:text-xs text-gray-600 leading-tight mt-0.5 truncate">
                         {teacher.title}
                       </p>
-
-                      {/* Decorative Line */}
-                      {/* <div className="mt-3 h-1 w-0 group-hover:w-full bg-gradient-to-r from-violet-500 to-indigo-500 transition-all duration-500 rounded-full"></div> */}
                     </div>
                   </div>
                 </div>
               ))}
           </div>
+
+
 
           {/* View All Button */}
           {/* <div className="mt-16 text-center">
@@ -256,7 +271,7 @@ const Home = () => {
           </div> */}
 
         </div>
-      </section>
+      </section >
       {/* ================= End Faculty Section ================= */}
 
 
@@ -362,7 +377,7 @@ const Home = () => {
 
       {/* Footer */}
       <Footer />
-    </div>
+    </div >
   );
 };
 

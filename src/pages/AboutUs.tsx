@@ -254,7 +254,7 @@ const AboutUs = () => {
                                     Nikhil Jaju
                                 </h3>
                                 <p className="mt-2 text-sm text-purple-700 font-semibold text-center">
-                                    Academic Director & Head of Classes
+                                    Academic Director
                                 </p>
 
                                 {/* Decorative Line */}

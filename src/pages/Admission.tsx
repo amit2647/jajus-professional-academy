@@ -86,7 +86,7 @@ const AdmissionPage = () => {
             nextBatch: "April 1, 2025"
         },
         {
-            name: "CS-EET",
+            name: "CS-Foundation",
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",

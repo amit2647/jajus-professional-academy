@@ -233,7 +233,7 @@ const AboutUs = () => {
 
                                 {/* Badge */}
                                 <div className="absolute -top-4 px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold rounded-full shadow-lg">
-                                    ⭐ Head of Classes
+                                    ⭐ Head of the class
                                 </div>
 
                                 {/* Portrait Image with Frame */}

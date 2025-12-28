@@ -50,7 +50,7 @@ const AdmissionPage = () => {
             duration: "1-2 years",
             batchSize: "30-35 students",
             fee: "₹20,000",
-            features: ["Offline & Online", "Regular Assessments", "Career Guidance", "Foundation Building"],
+            features: ["Offline & Online", "Regular Assessments", "Career Guidance"],
             nextBatch: "June 1, 2025"
         },
         {
@@ -58,7 +58,7 @@ const AdmissionPage = () => {
             duration: "1-2 years",
             batchSize: "30-35 students",
             fee: "₹20,000",
-            features: ["Offline", "Regular Assessments", "Career Guidance", "Foundation Building"],
+            features: ["Offline", "Regular Assessments", "Career Guidance"],
             nextBatch: "June 1, 2025"
         },
         {

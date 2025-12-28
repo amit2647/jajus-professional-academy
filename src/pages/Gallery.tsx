@@ -3,77 +3,99 @@ import { Link } from 'react-router-dom';
 import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { photoMap } from "../data/photoMap";
+import { galleryMap } from "../data/photoMap";
 
 // Gallery categories
 const categories = ['All', 'Events', 'Achievements', 'Campus Life', 'Seminars'];
 
-// Sample gallery data - replace with your actual images
+// Gallery images using galleryMap instead of photoMap
 const galleryImages = [
     {
         id: 1,
-        src: photoMap["Nikhi Jaju"], // Replace with actual gallery images
-        category: 'Events',
-        title: 'Annual Function 2024',
-        description: 'Students celebrating at our annual function'
+        src: galleryMap["Seminar"],
+        category: 'Seminars',
+        title: 'Seminar Session',
+        description: 'Students attending seminar session'
     },
     {
         id: 2,
-        src: photoMap["Pooja Jaju"],
-        category: 'Achievements',
-        title: 'CA Foundation Toppers',
-        description: 'Our star performers with their certificates'
+        src: galleryMap["Seminar1"],
+        category: 'Seminars',
+        title: 'Guest Speaker Seminar',
+        description: 'Interactive learning during seminar'
     },
     {
         id: 3,
-        src: photoMap["Sunil Sharma"],
-        category: 'Campus Life',
-        title: 'Interactive Learning',
-        description: 'Students engaged in classroom activities'
+        src: galleryMap["Seminar2"],
+        category: 'Seminars',
+        title: 'Career Growth Session',
+        description: 'Guidance session for students'
     },
     {
         id: 4,
-        src: photoMap["Swapnil Mundada"],
-        category: 'Seminars',
-        title: 'Guest Lecture Series',
-        description: 'Industry expert sharing insights'
+        src: galleryMap["Teachersday"],
+        category: 'Events',
+        title: 'Teachers Day Celebration',
+        description: 'Celebrating our amazing teachers'
     },
     {
         id: 5,
-        src: photoMap["Sagar Mantri"],
+        src: galleryMap["Teachersday1"],
         category: 'Events',
-        title: 'Sports Day 2024',
-        description: 'Students participating in sports events'
+        title: 'Teachers Day Moments',
+        description: 'Students showing gratitude'
     },
     {
         id: 6,
-        src: photoMap["Anuj Totla"],
-        category: 'Campus Life',
-        title: 'Library Session',
-        description: 'Students studying in our modern library'
+        src: galleryMap["Teachersday2"],
+        category: 'Events',
+        title: 'Teachers Day Function',
+        description: 'Memorable celebration'
     },
     {
         id: 7,
-        src: photoMap["Ganesh Agharde"],
-        category: 'Achievements',
-        title: 'Merit Awards Ceremony',
-        description: 'Recognizing academic excellence'
+        src: galleryMap["Teachersday3"],
+        category: 'Events',
+        title: 'Tribute to Teachers',
+        description: 'Special appreciation event'
     },
     {
         id: 8,
-        src: photoMap["Anand Dargad"],
+        src: galleryMap["Seminar6"],
         category: 'Seminars',
-        title: 'Career Guidance Workshop',
-        description: 'Professional development session'
+        title: 'Student Interaction',
+        description: 'Engaged classroom learning'
     },
     {
         id: 9,
-        src: photoMap["B B Ghuge"],
-        category: 'Events',
-        title: 'Cultural Fest',
-        description: 'Celebrating diversity and creativity'
+        src: galleryMap["Seminar7"],
+        category: 'Seminars',
+        title: 'Student Success',
+        description: 'Celebrating achievements'
+    },
+    {
+        id: 10,
+        src: galleryMap["Seminar3"],
+        category: 'Seminars',
+        title: 'Student Success',
+        description: 'Celebrating achievements'
+    },
+    {
+        id: 11,
+        src: galleryMap["Seminar4"],
+        category: 'Seminars',
+        title: 'Student Success',
+        description: 'Celebrating achievements'
+    },
+    {
+        id: 12,
+        src: galleryMap["Seminar5"],
+        category: 'Seminars',
+        title: 'Student Success',
+        description: 'Celebrating achievements'
     },
 ];
+
 
 const Gallery = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');

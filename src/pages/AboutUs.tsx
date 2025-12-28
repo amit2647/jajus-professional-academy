@@ -4,80 +4,116 @@ import Navbar from '../components/Navbar'; // Adjust path based on your file str
 import Footer from '../components/Footer';
 import { photoMap } from "../data/photoMap";
 import { useState } from 'react';
+import Nikhiljaju from "../assets/teachers/Ca_Nikhil_Jaju.webp"
+
 
 const teachers = [
+    // Head of Classes
     {
         name: "Nikhi Jaju Sir",
-        photo: photoMap["Nikhi Jaju"],
-        title: "Head of Classes & Academic Director",
+        photo: photoMap["Nikhil Jaju"],
+        title: "Teaching Exp.: 19 Years",
     },
+
+
     {
-        name: "Pooja Jaju",
+        name: "CA Pooja Jaju",
         photo: photoMap["Pooja Jaju"],
-        title: "Faculty - Business Studies",
+        title: "Teaching Exp.: 19 Years",
     },
     {
-        name: "Sunil Sharma",
-        photo: photoMap["Sunil Sharma"],
-        title: "Faculty - Accounting",
-    },
-    {
-        name: "Swapnil Mundada",
-        photo: photoMap["Swapnil Mundada"],
-        title: "Faculty - Taxation",
-    },
-    {
-        name: "Sagar Mantri",
-        photo: photoMap["Sagar Mantri"],
-        title: "Faculty - Cost & Management",
-    },
-    {
-        name: "Anuj Totla",
+        name: "Er. Anuj Totla",
         photo: photoMap["Anuj Totla"],
-        title: "Faculty - Economics & Law",
+        title: "Teaching Exp.: 14 Years",
     },
     {
-        name: "Ganesh Agharde",
+        name: "Er. Shailesh Dahad",
+        photo: photoMap["Shailesh Dahad"],
+        title: "Teaching Exp.: 28 Years",
+    },
+    {
+        name: "Er. Ganesh Agharde",
         photo: photoMap["Ganesh Agharde"],
-        title: "Faculty - Statistics & FM",
+        title: "Teaching Exp.: 11 Years",
+    },
+
+
+    {
+        name: "Prof. Sunil Sharma",
+        photo: photoMap["Sunil Sharma"],
+        title: "Teaching Exp.: 28 Years",
     },
     {
-        name: "Anand Dargad",
-        photo: photoMap["Anand Dargad"],
-        title: "Faculty - Business Studies",
+        name: "Adv. Swapnil Mundada",
+        photo: photoMap["Swapnil Mundada"],
+        title: "Teaching Exp.: 13 Years",
     },
     {
-        name: "B B Ghuge",
-        photo: photoMap["B B Ghuge"],
-        title: "Faculty - Accounting",
+        name: "Prof. Sagar Mantri",
+        photo: photoMap["Sagar Mantri"],
+        title: "Teaching Exp.: 14 Years",
     },
     {
-        name: "Krushna Kabra",
-        photo: photoMap["Krishna Kabra"],
-        title: "Faculty - Taxation",
-    },
-    {
-        name: "Darshan Patni",
+        name: "CA Darshan Patni",
         photo: photoMap["Darshan Patni"],
-        title: "Faculty - Cost & Management",
+        title: "Teaching Exp.: 4 Years",
+    },
+
+
+    {
+        name: "Prof. Krushna Kabra",
+        photo: photoMap["Krishna Kabra"],
+        title: "Teaching Exp.: 9 Years",
     },
     {
-        name: "Kajal Mundada",
+        name: "Prof. Dr. Kajal Mundada",
         photo: photoMap["Kajal Madam"],
-        title: "Faculty - Mathematics",
+        title: "Teaching Exp.: 21 Years",
     },
     {
-        name: "Shrikant Mundada",
+        name: "CMA Anand Dargad",
+        photo: photoMap["Anand Dargad"],
+        title: "Teaching Exp.: 11 Years",
+    },
+    {
+        name: "CA Payal Sarda",
+        photo: photoMap["Payal Sarda"],
+        title: "Teaching Exp.: 7 Years",
+    },
+
+
+    {
+        name: "Prof. Shrikant Mundada",
         photo: photoMap["Shrikant Mundada"],
-        title: "Faculty - Strategic Management",
+        title: "Teaching Exp.: 13 Years",
     },
     {
-        name: "Ravi Lohiya",
+        name: "Prof. B. B. Ghuge",
+        photo: photoMap["B B Ghuge"],
+        title: "Teaching Exp.: 28 Years",
+    },
+    {
+        name: "CA Ravi Lohiya",
         photo: photoMap["Ravi Lohiya"],
-        title: "Faculty - Information Technology",
+        title: "Teaching Exp.: 4 Years",
+    },
+    {
+        name: "Adv. Gauri Mundada",
+        photo: photoMap["Gauri Sarda"],
+        title: "Teaching Exp.: 2 Years",
+    },
+
+    {
+        name: "CA Kshitij Kaushike",
+        photo: photoMap["Kshitij Kaushike"],
+        title: "Teaching Exp.: 3 years",
+    },
+    {
+        name: "Adv. Shraddha Sharma",
+        photo: photoMap["Shraddha Sharma"],
+        title: "Teaching Exp.: 13 years",
     },
 ];
-
 
 
 
@@ -185,7 +221,7 @@ const AboutUs = () => {
                             <span className="text-sm font-semibold text-purple-500 tracking-wider uppercase">World-Class Education</span>
                         </div>
                         <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800/80 tracking-tight mb-4">
-                            Meet Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">Mentors</span>
+                            Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">Mentors</span>
                         </h2>
                         <p className="mt-4 text-lg text-purple-500 max-w-2xl mx-auto">
                             Expert educators committed to unlocking your full potential
@@ -205,10 +241,10 @@ const AboutUs = () => {
 
                                 {/* Portrait Image with Frame */}
                                 <div className="relative">
-                                    <div className="absolute -inset-2 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-3xl blur opacity-50"></div>
+                                    <div className="absolute -inset-2 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-3xl blur opacity-50"></div>
                                     <div className="relative w-56 h-72 sm:w-64 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform group-hover:scale-105 transition duration-500">
                                         <img
-                                            src={photoMap["Nikhi Jaju"]}
+                                            src={Nikhiljaju}
                                             alt="Nikhil Jaju"
                                             className="w-full h-full object-cover object-top"
                                             loading="lazy"
@@ -234,7 +270,6 @@ const AboutUs = () => {
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
                         {teachers
                             .filter(t => t.name !== "Nikhi Jaju Sir")
-                            .slice(0, 12)
                             .map((teacher, idx) => (
                                 <div
                                     key={idx}

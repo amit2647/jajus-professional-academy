@@ -171,7 +171,7 @@ const AdmissionPage = () => {
                         <p className="text-xl text-gray-600">Select the program that best fits your career goals</p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {courses.map((course, index) => (
                             <div
                                 key={index}
@@ -383,17 +383,16 @@ const AdmissionPage = () => {
                     <div
                         className="
         grid 
-        grid-cols-2 
+        grid-cols-1 
         sm:grid-cols-2 
         md:grid-cols-3 
         gap-6 sm:gap-8
-        place-items-center md:place-items-stretch
     "
                     >
 
 
                         {/* Phone */}
-                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm">
+                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center">
                             <Phone className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
                             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Phone</h3>
                             <p className="text-sm sm:text-base text-gray-600">+91 9028272762</p>
@@ -402,7 +401,7 @@ const AdmissionPage = () => {
                         </div>
 
                         {/* Email */}
-                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm">
+                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center">
                             <Mail className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
                             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Email</h3>
                             <p className="text-sm sm:text-base text-gray-600">admissions@jajuacademy.com</p>
@@ -410,7 +409,7 @@ const AdmissionPage = () => {
                         </div>
 
                         {/* Visit */}
-                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm">
+                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center">
                             <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
                             <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Visit Us</h3>
                             <p className="text-sm sm:text-base text-gray-600">Jaju's Professional Academy</p>

@@ -217,9 +217,6 @@ const AboutUs = () => {
 
                     {/* Section Header */}
                     <div className="text-center mb-16">
-                        <div className="inline-block mb-4 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                            <span className="text-sm font-semibold text-purple-500 tracking-wider uppercase">World-Class Education</span>
-                        </div>
                         <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800/80 tracking-tight mb-4">
                             Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">Mentors</span>
                         </h2>

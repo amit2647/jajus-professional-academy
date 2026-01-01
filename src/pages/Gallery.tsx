@@ -9,9 +9,107 @@ import CampusLifeVideo from "../assets/gallery/Campus_life.mp4";
 import CampusLifePoster from "../assets/gallery/campus_life_thumbnail.webp";
 
 // add 'Achievements' 
-const categories = ['All', 'Events', 'Campus Life', 'Seminars'];
+const categories = ['All', 'Events', 'Campus Life', 'Seminars', 'Achievements'];
 
 const galleryImages = [
+    // ---------------- ACHIEVEMENTS ----------------
+    {
+        id: 23,
+        type: 'image',
+        src: galleryMap["achievement"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Student success story'
+    },
+    {
+        id: 24,
+        type: 'image',
+        src: galleryMap["achievement1"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Proud achievement'
+    },
+    {
+        id: 25,
+        type: 'image',
+        src: galleryMap["achievement2"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Celebrating excellence'
+    },
+    {
+        id: 26,
+        type: 'image',
+        src: galleryMap["achievement3"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Milestone achieved'
+    },
+    {
+        id: 27,
+        type: 'image',
+        src: galleryMap["achievement4"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Hard work rewarded'
+    },
+    {
+        id: 28,
+        type: 'image',
+        src: galleryMap["achievement5"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Proud academy moment'
+    },
+    {
+        id: 29,
+        type: 'image',
+        src: galleryMap["achievement6"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Student accomplishment'
+    },
+    {
+        id: 30,
+        type: 'image',
+        src: galleryMap["achievement7"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Dedication and success'
+    },
+    {
+        id: 31,
+        type: 'image',
+        src: galleryMap["achievement8"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Award moment'
+    },
+    {
+        id: 32,
+        type: 'image',
+        src: galleryMap["achievement9"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Recognition day'
+    },
+    {
+        id: 33,
+        type: 'image',
+        src: galleryMap["achievement10"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Proud success'
+    },
+    {
+        id: 34,
+        type: 'image',
+        src: galleryMap["achievement11"],
+        category: 'Achievements',
+        title: 'Achievement',
+        description: 'Making history'
+    },
+    // ---------------- SEMINARS ----------------
     {
         id: 1,
         type: 'image',
@@ -37,7 +135,7 @@ const galleryImages = [
         description: 'Guidance session for students'
     },
 
-    // 🎥 YOUR VIDEO (poster now applied)
+    // 🎥 CAMPUS LIFE VIDEO
     {
         id: 100,
         type: 'video',
@@ -51,37 +149,29 @@ const galleryImages = [
     {
         id: 4,
         type: 'image',
-        src: galleryMap["Teachersday"],
-        category: 'Events',
-        title: 'Teachers Day Celebration',
-        description: 'Celebrating our amazing teachers'
+        src: galleryMap["Seminar3"],
+        category: 'Seminars',
+        title: 'Interactive Workshop',
+        description: 'Student engagement and learning'
     },
     {
         id: 5,
         type: 'image',
-        src: galleryMap["Teachersday1"],
-        category: 'Events',
-        title: 'Teachers Day Moments',
-        description: 'Students showing gratitude'
+        src: galleryMap["Seminar4"],
+        category: 'Seminars',
+        title: 'Learning Session',
+        description: 'Focused classroom environment'
     },
     {
         id: 6,
         type: 'image',
-        src: galleryMap["Teachersday2"],
-        category: 'Events',
-        title: 'Teachers Day Function',
-        description: 'Memorable celebration'
+        src: galleryMap["Seminar5"],
+        category: 'Seminars',
+        title: 'Career Talk',
+        description: 'Career opportunities discussion'
     },
     {
         id: 7,
-        type: 'image',
-        src: galleryMap["Teachersday3"],
-        category: 'Events',
-        title: 'Tribute to Teachers',
-        description: 'Special appreciation event'
-    },
-    {
-        id: 8,
         type: 'image',
         src: galleryMap["Seminar6"],
         category: 'Seminars',
@@ -89,38 +179,173 @@ const galleryImages = [
         description: 'Engaged classroom learning'
     },
     {
-        id: 9,
+        id: 8,
         type: 'image',
         src: galleryMap["Seminar7"],
         category: 'Seminars',
         title: 'Student Success',
-        description: 'Celebrating achievements'
+        description: 'Celebrating progress'
+    },
+
+    // ---------------- TEACHERS DAY ----------------
+    {
+        id: 9,
+        type: 'image',
+        src: galleryMap["Teachersday"],
+        category: 'Events',
+        title: 'Teachers Day Celebration',
+        description: 'Celebrating our amazing teachers'
     },
     {
         id: 10,
         type: 'image',
-        src: galleryMap["Seminar3"],
-        category: 'Seminars',
-        title: 'Student Success',
-        description: 'Celebrating achievements'
+        src: galleryMap["Teachersday1"],
+        category: 'Events',
+        title: 'Teachers Day Moments',
+        description: 'Students showing gratitude'
     },
     {
         id: 11,
         type: 'image',
-        src: galleryMap["Seminar4"],
-        category: 'Seminars',
-        title: 'Student Success',
-        description: 'Celebrating achievements'
+        src: galleryMap["Teachersday2"],
+        category: 'Events',
+        title: 'Teachers Day Function',
+        description: 'Memorable celebration'
     },
     {
         id: 12,
         type: 'image',
-        src: galleryMap["Seminar5"],
-        category: 'Seminars',
-        title: 'Student Success',
-        description: 'Celebrating achievements'
+        src: galleryMap["Teachersday3"],
+        category: 'Events',
+        title: 'Tribute to Teachers',
+        description: 'Special appreciation event'
+    },
+    {
+        id: 13,
+        type: 'image',
+        src: galleryMap["Teachersday01"],
+        category: 'Events',
+        title: 'Teachers Day Event',
+        description: 'Honoring our faculty'
+    },
+    {
+        id: 14,
+        type: 'image',
+        src: galleryMap["Teachersday02"],
+        category: 'Events',
+        title: 'Teachers Day Event',
+        description: 'Fun and celebrations'
+    },
+    {
+        id: 15,
+        type: 'image',
+        src: galleryMap["Teachersday03"],
+        category: 'Events',
+        title: 'Teachers Day Event',
+        description: 'Thanking our mentors'
+    },
+
+    // ---------------- EVENTS ----------------
+    {
+        id: 16,
+        type: 'image',
+        src: galleryMap["Event"],
+        category: 'Events',
+        title: 'Academy Event',
+        description: 'Memorable academy event'
+    },
+    {
+        id: 17,
+        type: 'image',
+        src: galleryMap["Event1"],
+        category: 'Events',
+        title: 'Student Event',
+        description: 'Fun activities'
+    },
+    {
+        id: 18,
+        type: 'image',
+        src: galleryMap["Event2"],
+        category: 'Events',
+        title: 'Cultural Event',
+        description: 'Celebrating together'
+    },
+    {
+        id: 19,
+        type: 'image',
+        src: galleryMap["Event3"],
+        category: 'Events',
+        title: 'Stage Event',
+        description: 'Student performances'
+    },
+    {
+        id: 20,
+        type: 'image',
+        src: galleryMap["Event4"],
+        category: 'Events',
+        title: 'Celebration Event',
+        description: 'Joyful memories'
+    },
+    {
+        id: 21,
+        type: 'image',
+        src: galleryMap["Event5"],
+        category: 'Events',
+        title: 'Fun Activity',
+        description: 'Team bonding moments'
+    },
+    {
+        id: 22,
+        type: 'image',
+        src: galleryMap["Event6"],
+        category: 'Events',
+        title: 'Academy Gathering',
+        description: 'Together we grow'
+    },
+
+    // ---------------- TURF / SPORTS ----------------
+    {
+        id: 35,
+        type: 'image',
+        src: galleryMap["turf1"],
+        category: 'Campus Life',
+        title: 'Sports Activity',
+        description: 'Fun on the turf'
+    },
+    {
+        id: 36,
+        type: 'image',
+        src: galleryMap["turf2"],
+        category: 'Campus Life',
+        title: 'Sports Time',
+        description: 'Team play moments'
+    },
+    {
+        id: 37,
+        type: 'image',
+        src: galleryMap["turf3"],
+        category: 'Campus Life',
+        title: 'Sports Event',
+        description: 'Energetic campus life'
+    },
+    {
+        id: 38,
+        type: 'image',
+        src: galleryMap["turf4"],
+        category: 'Campus Life',
+        title: 'Outdoor Fun',
+        description: 'Students enjoying sports'
+    },
+    {
+        id: 39,
+        type: 'image',
+        src: galleryMap["turf5"],
+        category: 'Campus Life',
+        title: 'Student Sports',
+        description: 'Healthy competition'
     },
 ];
+
 
 const Gallery = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');

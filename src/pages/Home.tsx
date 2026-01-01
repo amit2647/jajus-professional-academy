@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   MapPin,
   GraduationCap,
@@ -6,12 +6,15 @@ import {
   BookOpenCheck,
   LineChart,
   Trophy,
-  ShieldCheck
+  ShieldCheck,
+  Star
 } from "lucide-react";
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import heroSec from "../assets/hero_section.webp";
+import heroSec from "../assets/hero_section2.webp";
+import heroSec1 from "../assets/hero_section3.webp";
+import heroSec2 from "../assets/hero_section1.webp";
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { photoMap } from '../data/photoMap';
@@ -76,14 +79,84 @@ const Home = () => {
     }
   ];
 
+  const slides = [heroSec, heroSec1, heroSec2];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => setCurrentSlide(prev => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 8000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Navbar />
 
-      <section className="relative w-full h-full overflow-hidden">
-        <img src={heroSec} alt="Hero Background" className="w-full h-full object-cover" />
-      </section>
+      <div>
+        <section className="relative w-screen h-auto sm:h-[70vh] lg:h-[92vh] overflow-hidden">
+
+          {slides.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Hero Slide ${index + 1}`}
+              className={`
+          /* ------ MOBILE (show only active slide) ------ */
+          w-full h-auto object-contain object-top
+          ${currentSlide === index ? "block" : "hidden"}
+
+          /* ------ DESKTOP (fade slides with opacity) ------ */
+          sm:block
+          sm:absolute sm:inset-0
+          sm:w-full sm:h-full
+          sm:object-cover sm:object-center
+          sm:transition-opacity sm:duration-700 sm:ease-in-out
+          sm:${currentSlide === index ? "opacity-100 z-10" : "opacity-0 z-0"}
+        `}
+            />
+          ))}
+
+          {/* Overlay (desktop only) */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40" />
+
+          {/* Prev Button */}
+          <button
+            onClick={prevSlide}
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 
+        text-gray-900 px-3 py-2 rounded-full backdrop-blur shadow text-2xl z-20"
+          >
+            ‹
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={nextSlide}
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 
+        text-gray-900 px-3 py-2 rounded-full backdrop-blur shadow text-2xl z-20"
+          >
+            ›
+          </button>
+
+          {/* Dots */}
+          <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`
+            w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition
+            ${currentSlide === i ? "bg-white" : "bg-white/40"}
+          `}
+              />
+            ))}
+          </div>
+
+        </section>
+      </div>
+
+
 
       {/* Faculty Section */}
       <section className="py-16 relative overflow-hidden">
@@ -159,26 +232,36 @@ const Home = () => {
                   </p>
 
                   {/* Achievements */}
-                  <div className="bg-gradient-to-br from-white to-violet-50  rounded-2xl p-4 sm:p-5 shadow-sm">
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-3">
-                      Major Achievements
-                    </h4>
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-violet-100/60">
 
-                    <ul className="space-y-2 text-gray-700 text-sm sm:text-base">
+                    {/* Header */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <Trophy className="w-5 h-5 text-violet-600" />
+                      <h4 className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight">
+                        Major Achievements
+                      </h4>
+                    </div>
+
+                    {/* List */}
+                    <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
                       {[
                         "33rd Rank All India — CA Final",
                         "10th Rank All India — CS Final",
                         "16th Rank — CS Foundation",
                         "Maharashtra State Topper — HSC (2004)",
                       ].map((item, i) => (
-                        <li key={i} className="flex">
-                          <span className="text-violet-600 mr-2 leading-6">•</span>
-                          <span className="leading-6">{item}</span>
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 bg-violet-50/40 border border-violet-100 rounded-xl px-3 py-2.5"
+                        >
+                          <Star className="w-4 h-4 text-violet-600 mt-0.5" />
+                          <span className="leading-6 font-medium">{item}</span>
                         </li>
                       ))}
                     </ul>
 
                   </div>
+
 
                 </div>
               </div>

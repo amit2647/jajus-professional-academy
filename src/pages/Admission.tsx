@@ -50,7 +50,7 @@ const AdmissionPage = () => {
             duration: "1-2 years",
             batchSize: "30-35 students",
             fee: "₹20,000",
-            features: ["Offline & Online", "Regular Assessments", "Career Guidance"],
+            features: ["Regular Tests", "Mock test", "State Board Pattern", "2 years course"],
             nextBatch: "June 1, 2025"
         },
         {
@@ -58,7 +58,7 @@ const AdmissionPage = () => {
             duration: "1-2 years",
             batchSize: "30-35 students",
             fee: "₹20,000",
-            features: ["Offline", "Regular Assessments", "Career Guidance"],
+            features: ["Offline", "Regular Assessments", "XI-XII state board", "CA Foundation Exams"],
             nextBatch: "June 1, 2025"
         },
         {
@@ -66,7 +66,7 @@ const AdmissionPage = () => {
             duration: "4-6 months",
             batchSize: "25-30 students",
             fee: "₹25,000",
-            features: ["Offline", "Mock Tests", "Progress Tracking"],
+            features: ["Offline", "Mock Tests", "Progress Tracking", "Comprehensive Study Material"],
             nextBatch: "March 15, 2025"
         },
         {
@@ -74,7 +74,7 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "Exam Strategies"],
+            features: ["Offline", "Practical Training", "Mentorship"],
             nextBatch: "April 1, 2025"
         },
         {
@@ -82,7 +82,7 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "Exam Strategies"],
+            features: ["Offline", "Practical Training", "Mentorship"],
             nextBatch: "April 1, 2025"
         },
         {

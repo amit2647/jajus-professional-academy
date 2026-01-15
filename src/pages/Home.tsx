@@ -7,14 +7,14 @@ import {
   LineChart,
   Trophy,
   ShieldCheck,
-  Star
+  // Star
 } from "lucide-react";
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import heroSec from "../assets/hero_section2.webp";
+import heroSec from "../assets/hero_section.webp";
 import heroSec1 from "../assets/hero_section3.webp";
-import heroSec2 from "../assets/hero_section1.webp";
+//import heroSec2 from "../assets/hero_section1.webp";
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { photoMap } from '../data/photoMap';
@@ -79,7 +79,7 @@ const Home = () => {
     }
   ];
 
-  const slides = [heroSec, heroSec1, heroSec2];
+  const slides = [heroSec, heroSec1];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => setCurrentSlide(prev => (prev + 1) % slides.length);
@@ -178,7 +178,7 @@ const Home = () => {
               {/* Floating Badge */}
               <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
                 <div className="px-5 py-2 bg-white shadow-lg border border-violet-200 rounded-full text-violet-700 font-bold text-xs sm:text-sm tracking-wide">
-                  ⭐ Head of The Class
+                  ⭐ Founder
                 </div>
               </div>
 
@@ -231,10 +231,10 @@ const Home = () => {
                     and inspiring excellence in commerce and professional education.
                   </p>
 
-                  {/* Achievements */}
+                  {/* Achievements
                   <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-violet-100/60">
 
-                    {/* Header */}
+                    {/* Header 
                     <div className="flex items-center gap-2 mb-4">
                       <Trophy className="w-5 h-5 text-violet-600" />
                       <h4 className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight">
@@ -242,7 +242,7 @@ const Home = () => {
                       </h4>
                     </div>
 
-                    {/* List */}
+                    {/* List 
                     <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
                       {[
                         "33rd Rank All India — CA Final",
@@ -260,7 +260,7 @@ const Home = () => {
                       ))}
                     </ul>
 
-                  </div>
+                  </div> */}
 
 
                 </div>
@@ -369,41 +369,17 @@ const Home = () => {
             VISIT US
           </h2>
 
-          {/* grid for 2 locations */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8">
+          {/* grid for 3 locations */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-8">
 
-            {/* Location 1 */}
+            {/* Location 1 - Usmanpura Branch */}
             <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-violet-200">
               <div className="flex flex-col items-center">
 
-                <div className="flex items-center justify-center mb-3 sm:mb-4">
-                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-violet-600 mr-2" />
-                </div>
-
-                {/* MAP */}
-                <div className="w-full rounded-xl overflow-hidden shadow-lg border border-violet-200 aspect-[4/3] sm:aspect-[16/9]">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.5281878602793!2d75.33292503782774!3d19.87433524149135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb987469ba1515%3A0x1f5fd27a76a6b06b!2sJaju%20Professional%20Academy!5e0!3m2!1sen!2sin!4v1761569288710!5m2!1sen!2sin"
-                    className="w-full h-full"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-              </div>
-
-              <p className="mt-3 sm:mt-4 text-violet-700 font-semibold hover:text-violet-900 text-xs sm:text-sm lg:text-base">
-                Address:
-                <br />
-                Jaju Professional Academy,
-                Beed Bypass Road, Chhatrapati Sambhajinagar, Maharashtra 431001
-              </p>
-            </div>
-
-            {/* Location 2 */}
-            <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-violet-200">
-              <div className="flex flex-col items-center">
+                {/* Branch Name */}
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
+                  Usmanpura Branch
+                </h3>
 
                 <div className="flex items-center justify-center mb-3 sm:mb-4">
                   <MapPin className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-violet-600 mr-2" />
@@ -431,7 +407,78 @@ const Home = () => {
               </p>
             </div>
 
+
+            {/* Location 2 - Head Office */}
+            <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-violet-200">
+              <div className="flex flex-col items-center">
+
+                {/* Branch Name */}
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
+                  Head Office
+                </h3>
+
+                <div className="flex items-center justify-center mb-3 sm:mb-4">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-violet-600 mr-2" />
+                </div>
+
+                {/* MAP */}
+                <div className="w-full rounded-xl overflow-hidden shadow-lg border border-violet-200 aspect-[4/3] sm:aspect-[16/9]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.5281878602793!2d75.33292503782774!3d19.87433524149135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb987469ba1515%3A0x1f5fd27a76a6b06b!2sJaju%20Professional%20Academy!5e0!3m2!1sen!2sin!4v1761569288710!5m2!1sen!2sin"
+                    className="w-full h-full"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
+
+              <p className="mt-3 sm:mt-4 text-violet-700 font-semibold hover:text-violet-900 text-xs sm:text-sm lg:text-base">
+                Address:
+                <br />
+                Jaju Professional Academy,
+                Beed Bypass Road, Chhatrapati Sambhajinagar, Maharashtra 431001
+              </p>
+            </div>
+
+
+            {/* Location 3 - Waluj Branch */}
+            <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-violet-200">
+              <div className="flex flex-col items-center">
+
+                {/* Branch Name */}
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
+                  Waluj Branch
+                </h3>
+
+                <div className="flex items-center justify-center mb-3 sm:mb-4">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-violet-600 mr-2" />
+                </div>
+
+                {/* MAP */}
+                <div className="w-full rounded-xl overflow-hidden shadow-lg border border-violet-200 aspect-[4/3] sm:aspect-[16/9]">
+                  <iframe
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=X-47,%201st%20Floor,%20Opp.%20Shaheed%20Bhagatsing%20School,%20Bajaj%20Nagar,%20Waluj+(jajus%20professional%20academy%20(%20waluj%20branch%20))&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                    className="w-full h-full"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
+
+              <p className="mt-3 sm:mt-4 text-violet-700 font-semibold hover:text-violet-900 text-xs sm:text-sm lg:text-base">
+                Address:
+                <br />
+                X-47, 1st Floor, Opp. Shaheed Bhagatsing School, Bajaj Nagar,
+                Waluj, Chhatrapati Sambhajinagar, Maharashtra 431001
+              </p>
+            </div>
+
           </div>
+
         </div>
       </section>
 

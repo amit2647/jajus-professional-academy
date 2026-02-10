@@ -217,7 +217,7 @@ const AboutUs = () => {
 
                     {/* Section Header */}
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800/80 tracking-tight mb-4">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-violet-800/80 tracking-tight mb-4">
                             Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500">Mentors</span>
                         </h2>
                         <p className="mt-4 text-lg text-purple-500 max-w-2xl mx-auto">
@@ -541,8 +541,8 @@ const AboutUs = () => {
                             <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
         hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                                    <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                                    <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                                 </div>
 
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -557,7 +557,7 @@ const AboutUs = () => {
                                     +91 9359794886
                                 </p>
 
-                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                                     Tap to Call →
                                 </p>
                             </div>
@@ -569,8 +569,8 @@ const AboutUs = () => {
                             <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
         hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                                    <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                                    <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                                 </div>
 
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -581,7 +581,7 @@ const AboutUs = () => {
                                     admissions@jajuacademy.com
                                 </p>
 
-                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                                     Send an Email →
                                 </p>
                             </div>
@@ -589,17 +589,16 @@ const AboutUs = () => {
 
 
                         {/* Visit */}
-                        <a
-                            href="https://maps.google.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            to={{ pathname: "/", hash: "#visit-us" }}
                             className="block"
                         >
-                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
-        hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                                    <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
+                            hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+
+                                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                                    <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                                 </div>
 
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -610,11 +609,11 @@ const AboutUs = () => {
                                     Jaju's Professional Academy
                                 </p>
 
-                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
-                                    Open in Google Maps →
+                                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
+                                    View Locations →
                                 </p>
                             </div>
-                        </a>
+                        </Link>
 
 
                         {/* Instagram */}
@@ -626,8 +625,8 @@ const AboutUs = () => {
                         >
                             <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-500 transition-colors p-3 rounded-full">
-                                    <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-500 transition-colors p-3 rounded-full">
+                                    <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                                 </div>
 
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -638,7 +637,7 @@ const AboutUs = () => {
                                     @jajus_professional_academy
                                 </p>
 
-                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                                     View Results & Student Updates →
                                 </p>
                             </div>
@@ -654,8 +653,8 @@ const AboutUs = () => {
                         >
                             <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                                    <Facebook className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                                    <Facebook className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                                 </div>
 
                                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -666,7 +665,7 @@ const AboutUs = () => {
                                     Jaju's Professional Academy
                                 </p>
 
-                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                                     Follow for Announcements →
                                 </p>
                             </div>

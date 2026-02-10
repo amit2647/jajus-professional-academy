@@ -19,7 +19,7 @@ import Footer from '../components/Footer';
 import heroSec from "../assets/hero_section.webp";
 import heroSec1 from "../assets/hero_section3.webp";
 //import heroSec2 from "../assets/hero_section1.webp";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
 import { photoMap } from '../data/photoMap';
 import Nikhiljaju from "../assets/teachers/Ca_Nikhil_Jaju.webp"
@@ -47,6 +47,8 @@ const teachers = [
 ];
 
 const Home = () => {
+
+  const location = useLocation();
 
   const [hoveredProgramIndex, setHoveredProgramIndex] = useState<number | null>(null);
 
@@ -98,6 +100,27 @@ const Home = () => {
     const interval = setInterval(nextSlide, 8000);
     return () => clearInterval(interval);
   }, [nextSlide]);
+
+  // Handle hash navigation (/#visit-us)
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+
+      // Wait for images + layout to fully render
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }, 350);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -372,7 +395,8 @@ const Home = () => {
       </section>
 
       {/* Visit Us Section */}
-      <section className="py-10 sm:py-12 lg:py-20 bg-white">
+      <section id="visit-us" className="py-10 sm:py-12 lg:py-20 bg-white">
+
         <div className="max-w-[90rem] mx-auto px-3 sm:px-6 lg:px-4 xl:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
             VISIT US
@@ -520,8 +544,8 @@ const Home = () => {
               <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
         hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                  <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                  <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -536,7 +560,7 @@ const Home = () => {
                   +91 9359794886
                 </p>
 
-                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                   Tap to Call →
                 </p>
               </div>
@@ -548,8 +572,8 @@ const Home = () => {
               <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
         hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                  <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                  <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -560,37 +584,8 @@ const Home = () => {
                   admissions@jajuacademy.com
                 </p>
 
-                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                   Send an Email →
-                </p>
-              </div>
-            </a>
-
-
-            {/* Visit */}
-            <a
-              href="https://maps.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
-        hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
-
-                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                  <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
-                  Visit Our Center
-                </h3>
-
-                <p className="text-sm sm:text-base text-gray-600">
-                  Jaju's Professional Academy
-                </p>
-
-                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
-                  Open in Google Maps →
                 </p>
               </div>
             </a>
@@ -605,8 +600,8 @@ const Home = () => {
             >
               <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-500 transition-colors p-3 rounded-full">
-                  <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-500 transition-colors p-3 rounded-full">
+                  <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -617,7 +612,7 @@ const Home = () => {
                   @jajus_professional_academy
                 </p>
 
-                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                   View Results & Student Updates →
                 </p>
               </div>
@@ -633,8 +628,8 @@ const Home = () => {
             >
               <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
-                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
-                  <Facebook className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="mx-auto mb-3 sm:mb-4 bg-violet-100 group-hover:bg-violet-600 transition-colors p-3 rounded-full">
+                  <Facebook className="w-8 h-8 sm:w-10 sm:h-10 text-violet-600 group-hover:text-white transition-colors" />
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
@@ -645,7 +640,7 @@ const Home = () => {
                   Jaju's Professional Academy
                 </p>
 
-                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">
                   Follow for Announcements →
                 </p>
               </div>

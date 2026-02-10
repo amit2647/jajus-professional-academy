@@ -568,7 +568,7 @@ const Home = () => {
 
 
             {/* Email */}
-            <a href="mailto:admissions@jajuacademy.com" className="block">
+            <a href="mailto:Jajusprofessionalacademy@gmail.com" className="block">
               <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
         hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
 
@@ -581,7 +581,7 @@ const Home = () => {
                 </h3>
 
                 <p className="text-sm sm:text-base text-gray-600 break-all">
-                  admissions@jajuacademy.com
+                  Jajusprofessionalacademy@gmail.com
                 </p>
 
                 <p className="text-xs sm:text-sm text-violet-600 mt-2 font-semibold">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CheckCircle, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { CheckCircle, Phone, Mail, MapPin, ArrowRight, Facebook, Instagram } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -12,7 +12,8 @@ const AdmissionPage = () => {
         phone: '',
         course: '',
         experience: '',
-        message: ''
+        message: '',
+        testSeriesSubject: ''
     });
 
     // Pre-fill course from query parameter
@@ -66,7 +67,7 @@ const AdmissionPage = () => {
             duration: "4-6 months",
             batchSize: "25-30 students",
             fee: "₹25,000",
-            features: ["Offline", "Mock Tests", "Progress Tracking", "Comprehensive Study Material"],
+            features: ["crash batch", "Mock Tests", "Progress Tracking", "Comprehensive Study Material"],
             nextBatch: "March 15, 2025"
         },
         {
@@ -74,7 +75,7 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "Mentorship"],
+            features: ["Mentorship", "Test series", "regular batch"],
             nextBatch: "April 1, 2025"
         },
         {
@@ -82,7 +83,7 @@ const AdmissionPage = () => {
             duration: "8-12 months",
             batchSize: "20-25 students",
             fee: "₹45,000",
-            features: ["Offline", "Practical Training", "Mentorship"],
+            features: ["Test series", "Practical Training", "Mentorship"],
             nextBatch: "April 1, 2025"
         },
         {
@@ -91,6 +92,14 @@ const AdmissionPage = () => {
             batchSize: "20-25 students",
             fee: "₹45,000",
             features: ["Offline", "Practical Training", "Exam Strategies"],
+            nextBatch: "April 1, 2025"
+        },
+        {
+            name: "Test Series",
+            duration: "8-12 months",
+            batchSize: "20-25 students",
+            fee: "₹45,000",
+            features: ["Attempt", "Test Analysis", "Exam Strategies"],
             nextBatch: "April 1, 2025"
         }
     ];
@@ -132,7 +141,8 @@ const AdmissionPage = () => {
                     phone: "",
                     course: "",
                     experience: "",
-                    message: ""
+                    message: "",
+                    testSeriesSubject: ''
                 });
             } else {
                 alert(`Submission failed: ${result.message || "Unknown error"}`);
@@ -142,6 +152,8 @@ const AdmissionPage = () => {
             alert("Submission failed. Please try again.");
         }
     };
+
+    const isTestSeries = formData.course === "Test Series";
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -316,7 +328,9 @@ const AdmissionPage = () => {
                                         <option value="CA Foundation">CA Foundation</option>
                                         <option value="CA Intermediate">CA Intermediate</option>
                                         <option value="CA Final">CA Final</option>
-                                        <option value="CS-EET">CS-EET</option>
+                                        <option value="CS-Foundation">CS-Foundation</option>
+                                        <option value="Test Series">Test Series</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -338,6 +352,20 @@ const AdmissionPage = () => {
                                     <option value="Post Graduate">Post Graduate</option>
                                 </select>
                             </div>
+
+                            {isTestSeries && (<div className="mt-4 sm:mt-6">
+                                <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
+                                    Attempt
+                                </label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    rows={4}
+                                    className="w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                                    placeholder="Enter the attempt details (e.g., CA Foundation Nov 2024)"
+                                ></textarea>
+                            </div>)}
 
                             <div className="mt-4 sm:mt-6">
                                 <label className="block text-gray-700 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
@@ -392,29 +420,141 @@ const AdmissionPage = () => {
 
 
                         {/* Phone */}
-                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center">
-                            <Phone className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
-                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Phone</h3>
-                            <p className="text-sm sm:text-base text-gray-600">+91 9028272762</p>
-                            <p className="text-sm sm:text-base text-gray-600">+91 9359794886</p>
-                            <p className="text-xs sm:text-sm text-gray-600 mt-1">Mon-Sat: 9 AM - 6 PM</p>
-                        </div>
+                        <a href="tel:+919028272762" className="block">
+                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
+        hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+
+                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
+                                    <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                </div>
+
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                                    Call Us
+                                </h3>
+
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    +91 9028272762
+                                </p>
+
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    +91 9359794886
+                                </p>
+
+                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                    Tap to Call →
+                                </p>
+                            </div>
+                        </a>
+
 
                         {/* Email */}
-                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center">
-                            <Mail className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
-                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Email</h3>
-                            <p className="text-sm sm:text-base text-gray-600">admissions@jajuacademy.com</p>
-                            <p className="text-xs sm:text-sm text-gray-600 mt-1">We'll respond within 24 hours</p>
-                        </div>
+                        <a href="mailto:admissions@jajuacademy.com" className="block">
+                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
+        hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+
+                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
+                                    <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                </div>
+
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                                    Email Us
+                                </h3>
+
+                                <p className="text-sm sm:text-base text-gray-600 break-all">
+                                    admissions@jajuacademy.com
+                                </p>
+
+                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                    Send an Email →
+                                </p>
+                            </div>
+                        </a>
+
 
                         {/* Visit */}
-                        <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center">
-                            <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-violet-600 mx-auto mb-3 sm:mb-4" />
-                            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Visit Us</h3>
-                            <p className="text-sm sm:text-base text-gray-600">Jaju's Professional Academy</p>
-                            <p className="text-xs sm:text-sm text-gray-600 mt-1">Schedule a campus visit</p>
-                        </div>
+                        <a
+                            href="https://maps.google.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block"
+                        >
+                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center 
+        hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+
+                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
+                                    <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                </div>
+
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                                    Visit Our Center
+                                </h3>
+
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    Jaju's Professional Academy
+                                </p>
+
+                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                    Open in Google Maps →
+                                </p>
+                            </div>
+                        </a>
+
+
+                        {/* Instagram */}
+                        <a
+                            href="https://www.instagram.com/jajus_professional_academy/?hl=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block"
+                        >
+                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+
+                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-500 transition-colors p-3 rounded-full">
+                                    <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                </div>
+
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                                    Instagram
+                                </h3>
+
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    @jajus_professional_academy
+                                </p>
+
+                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                    View Results & Student Updates →
+                                </p>
+                            </div>
+                        </a>
+
+
+                        {/* Facebook */}
+                        <a
+                            href="https://www.facebook.com/profile.php?id=100057527465942"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block"
+                        >
+                            <div className="text-center p-5 sm:p-8 bg-gray-50 rounded-2xl shadow-sm w-full h-full flex flex-col justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+
+                                <div className="mx-auto mb-3 sm:mb-4 bg-blue-100 group-hover:bg-blue-600 transition-colors p-3 rounded-full">
+                                    <Facebook className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 group-hover:text-white transition-colors" />
+                                </div>
+
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                                    Facebook
+                                </h3>
+
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    Jaju's Professional Academy
+                                </p>
+
+                                <p className="text-xs sm:text-sm text-blue-600 mt-2 font-semibold">
+                                    Follow for Announcements →
+                                </p>
+                            </div>
+                        </a>
+
 
                     </div>
                 </div>

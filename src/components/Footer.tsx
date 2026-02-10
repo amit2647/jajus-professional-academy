@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Instagram, Facebook } from "lucide-react";
 
 function Footer() {
     return (
@@ -29,20 +29,73 @@ function Footer() {
                     </div>
 
                     <div>
-                        <h4 className="text-lg font-semibold mb-4">CONTACT</h4>
-                        <div className="text-violet-200 text-sm space-y-3">
-                            <div className="flex items-center">
-                                <Phone className="w-4 h-4 mr-2" />
-                                <span>
-                                    +91 9028272762
-                                    <br />
-                                    +91 9359794886
-                                </span>
+                        <h4 className="text-lg font-semibold mb-4 text-center sm:text-left">
+                            CONTACT
+                        </h4>
+
+                        <div className="text-violet-200 text-sm space-y-4 text-center sm:text-left flex flex-col items-center sm:items-start">
+
+                            {/* Phone Numbers */}
+                            <div className="flex flex-col gap-2 items-center sm:items-start">
+
+                                <div className="flex items-center justify-center sm:justify-start">
+                                    <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                                    <a href="tel:+919028272762" className="hover:underline">
+                                        +91 9028272762
+                                    </a>
+                                </div>
+
+                                <div className="flex items-center justify-center sm:justify-start">
+                                    <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                                    <a href="tel:+919359794886" className="hover:underline">
+                                        +91 9359794886
+                                    </a>
+                                </div>
+
                             </div>
-                            <div className="flex items-center">
-                                <Mail className="w-4 h-4 mr-2" />
-                                <span>Jajusprofessionalacademy@gmail.com</span>
+
+                            {/* Email */}
+                            <div className="flex items-center justify-center sm:justify-start">
+                                <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
+                                <a
+                                    href="mailto:Jajusprofessionalacademy@gmail.com"
+                                    className="hover:underline break-all"
+                                >
+                                    Jajusprofessionalacademy@gmail.com
+                                </a>
                             </div>
+
+                            {/* Social Media */}
+                            <div className="flex flex-col space-y-2 items-center sm:items-start pt-2">
+
+                                {/* Instagram */}
+                                <a
+                                    href="https://www.instagram.com/jajus_professional_academy/?hl=en"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    <div className="flex items-center justify-center sm:justify-start">
+                                        <Instagram className="w-5 h-5 mr-2" />
+                                        <span>Jajus Professional Academy</span>
+                                    </div>
+                                </a>
+
+                                {/* Facebook */}
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=100057527465942"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    <div className="flex items-center justify-center sm:justify-start">
+                                        <Facebook className="w-5 h-5 mr-2" />
+                                        <span>Jajus Professional Academy</span>
+                                    </div>
+                                </a>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>

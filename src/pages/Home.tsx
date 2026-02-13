@@ -59,7 +59,7 @@ const Home = () => {
       icon: <GraduationCap />
     },
     {
-      title: "XI & XII Foundation",
+      title: "XI & XII + CA Foundation",
       description: "Strong foundation for aspiring commerce student",
       icon: <Layers />
     },
@@ -411,7 +411,7 @@ const Home = () => {
 
                 {/* Branch Name */}
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
-                  Usmanpura Branch
+                  Office, Usmanpura Branch
                 </h3>
 
                 <div className="flex items-center justify-center mb-3 sm:mb-4">
@@ -447,7 +447,7 @@ const Home = () => {
 
                 {/* Branch Name */}
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
-                  Head Office
+                  Head Office, Jalna Road Branch
                 </h3>
 
                 <div className="flex items-center justify-center mb-3 sm:mb-4">
@@ -471,7 +471,7 @@ const Home = () => {
                 Address:
                 <br />
                 Jaju Professional Academy,
-                Beed Bypass Road, Chhatrapati Sambhajinagar, Maharashtra 431001
+                Jalna Road, Chhatrapati Sambhajinagar, Maharashtra 431001
               </p>
             </div>
 
@@ -482,7 +482,7 @@ const Home = () => {
 
                 {/* Branch Name */}
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
-                  Waluj Branch
+                  Office, Waluj Branch
                 </h3>
 
                 <div className="flex items-center justify-center mb-3 sm:mb-4">
@@ -506,7 +506,7 @@ const Home = () => {
                 Address:
                 <br />
                 X-47, 1st Floor, Opp. Shaheed Bhagatsing School, Bajaj Nagar,
-                Waluj, Chhatrapati Sambhajinagar, Maharashtra 431001
+                Waluj, Chhatrapati Sambhajinagar, Maharashtra 431136
               </p>
             </div>
 

@@ -55,7 +55,7 @@ const AdmissionPage = () => {
             nextBatch: "June 1, 2025"
         },
         {
-            name: "XI & XII Foundation",
+            name: "XI & XII + CA Foundation",
             duration: "1-2 years",
             batchSize: "30-35 students",
             fee: "₹20,000",
@@ -324,7 +324,7 @@ const AdmissionPage = () => {
                                     >
                                         <option value="">Select a course</option>
                                         <option value="XI & XII Commerce">XI & XII Commerce</option>
-                                        <option value="XI & XII Foundation">XI & XII Foundation</option>
+                                        <option value="XI & XII + CA Foundation">XI & XII + CA Foundation</option>
                                         <option value="CA Foundation">CA Foundation</option>
                                         <option value="CA Intermediate">CA Intermediate</option>
                                         <option value="CA Final">CA Final</option>

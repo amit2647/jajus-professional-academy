@@ -8,7 +8,7 @@ function Footer() {
                     <div>
                         <h3 className="text-2xl font-bold mb-4">Jaju Professional Academy</h3>
                         <p className="text-violet-200 leading-relaxed">
-                            Join Jaju's Professional Academy and start preparing for your CA Foundation and CA Intermediate exams.
+                            Join Jaju's Professional Academy and start preparing for your CA Journey.
                         </p>
                     </div>
 
@@ -22,9 +22,13 @@ function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">PROGRAMS</h4>
                         <ul className="text-violet-200 text-sm space-y-2">
-                            <li>Ca Foundation</li>
-                            <li>Ca Intermediate</li>
                             <li>XI & XII Commerce</li>
+                            <li>XI & XII + CA Foundation</li>
+                            <li>CA Foundation</li>
+                            <li>CA Intermediate</li>
+                            <li>CA Final</li>
+                            <li>CS-Foundation</li>
+                            <li>Test Series</li>
                         </ul>
                     </div>
 

@@ -104,9 +104,28 @@ function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-violet-700 mt-12 pt-8 text-center">
-                    <p className="text-violet-200">&copy; 2025 Jaju's Professional Academy. All rights reserved.</p>
+                <div className="border-t border-violet-700 mt-12 pt-8 text-center space-y-2">
+
+                    {/* Copyright */}
+                    <p className="text-violet-200">
+                        &copy; 2026 Jaju's Professional Academy. All rights reserved.
+                    </p>
+
+                    {/* Developer Credit */}
+                    <p className="text-violet-300 text-sm">
+                        Website developed by{" "}
+                        <a
+                            href="https://www.amitmahorkar.in"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold text-white hover:underline hover:text-violet-100 transition-colors"
+                        >
+                            Amit Mahorkar
+                        </a>
+                    </p>
+
                 </div>
+
             </div>
         </footer >
     );

@@ -23,6 +23,7 @@ import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
 import { photoMap } from '../data/photoMap';
 import Nikhiljaju from "../assets/teachers/Ca_Nikhil_Jaju.webp"
+import FloatingEnquiryButton from '../components/FloatingEnquiryButton';
 
 const teachers = [
   { name: "Nikhi Jaju Sir", photo: photoMap["Nikhil Jaju"], title: "Teaching Exp.: 19 Years" },
@@ -651,7 +652,7 @@ const Home = () => {
         </div>
       </section>
 
-
+      <FloatingEnquiryButton />
       <Footer />
     </div>
   );

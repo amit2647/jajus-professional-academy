@@ -74,6 +74,17 @@ import Turf3 from "../assets/gallery/turf3.webp";
 import Turf4 from "../assets/gallery/turf4.webp";
 import Turf5 from "../assets/gallery/turf5.webp";
 
+// ---------- Gallery (Facilities) ----------
+
+import Facilities1 from "../assets/gallery/facilities1.webp";
+import Facilities2 from "../assets/gallery/facilities2.webp";
+import Facilities3 from "../assets/gallery/facilities3.webp";
+import Facilities4 from "../assets/gallery/facilities4.webp";
+import Facilities5 from "../assets/gallery/facilities5.webp";
+import Facilities6 from "../assets/gallery/facilities6.webp";
+import Facilities7 from "../assets/gallery/facilities7.webp";
+import Facilities8 from "../assets/gallery/facilities8.webp";
+
 
 // ---------- Gallery (Campus Life Thumbnail) ----------
 import CampusLifeThumb from "../assets/gallery/campus_life_thumbnail.webp";
@@ -153,6 +164,16 @@ export const galleryMap: Record<string, string> = {
   "turf3": Turf3,
   "turf4": Turf4,
   "turf5": Turf5,
+
+  // Facilities
+  "facilities1": Facilities1,
+  "facilities2": Facilities2,
+  "facilities3": Facilities3,
+  "facilities4": Facilities4,
+  "facilities5": Facilities5,
+  "facilities6": Facilities6,
+  "facilities7": Facilities7,
+  "facilities8": Facilities8,
 
   // Campus life thumbnail
   "campus_life_thumbnail": CampusLifeThumb,

@@ -412,7 +412,7 @@ const Home = () => {
 
                 {/* Branch Name */}
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
-                  Office, Usmanpura Branch
+                  Head Office, Usmanpura Branch
                 </h3>
 
                 <div className="flex items-center justify-center mb-3 sm:mb-4">
@@ -448,7 +448,7 @@ const Home = () => {
 
                 {/* Branch Name */}
                 <h3 className="text-base sm:text-lg lg:text-xl font-bold text-violet-900 mb-2">
-                  Head Office, Jalna Road Branch
+                  Office, Jalna Road Branch
                 </h3>
 
                 <div className="flex items-center justify-center mb-3 sm:mb-4">
@@ -458,7 +458,7 @@ const Home = () => {
                 {/* MAP */}
                 <div className="w-full rounded-xl overflow-hidden shadow-lg border border-violet-200 aspect-[4/3] sm:aspect-[16/9]">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.5281878602793!2d75.33292503782774!3d19.87433524149135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb987469ba1515%3A0x1f5fd27a76a6b06b!2sJaju%20Professional%20Academy!5e0!3m2!1sen!2sin!4v1761569288710!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d526.4608423665989!2d75.33302438969653!3d19.87436502573062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb9994ac752f4f%3A0x7b75f1ce99234d8c!2sJaju&#39;s%20Professional%20Academy%20(Jalna%20Road%20Branch)!5e0!3m2!1sen!2sin!4v1773116095165!5m2!1sen!2sin"
                     className="w-full h-full"
                     style={{ border: 0 }}
                     allowFullScreen
